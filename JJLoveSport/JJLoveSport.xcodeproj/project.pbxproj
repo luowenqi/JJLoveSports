@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53182B2F008362EFE74321C3 /* libPods-JJLoveSport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD2E7C332FD65F3C41B0900 /* libPods-JJLoveSport.a */; };
 		A419355C1EC30B52003FA0FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A419355B1EC30B52003FA0FD /* main.m */; };
 		A419355F1EC30B52003FA0FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A419355E1EC30B52003FA0FD /* AppDelegate.m */; };
 		A41935671EC30B53003FA0FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A41935661EC30B53003FA0FD /* Assets.xcassets */; };
@@ -18,9 +19,14 @@
 		A41935B51EC3141E003FA0FD /* JJProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935A21EC3141E003FA0FD /* JJProfileVC.m */; };
 		A41935B61EC3141E003FA0FD /* JJSportVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935A81EC3141E003FA0FD /* JJSportVC.m */; };
 		A41935B71EC3141E003FA0FD /* JJSportCicleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935AE1EC3141E003FA0FD /* JJSportCicleVC.m */; };
+		A41935BD1EC32255003FA0FD /* JJSportSupportVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935BC1EC32255003FA0FD /* JJSportSupportVC.m */; };
+		A41935C01EC32290003FA0FD /* JJSportMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935BF1EC32290003FA0FD /* JJSportMapVC.m */; };
+		A41935C31EC322AD003FA0FD /* JJSportTrackingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935C21EC322AD003FA0FD /* JJSportTrackingModel.m */; };
+		A41935C81EC32F33003FA0FD /* UIButton+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935C71EC32F33003FA0FD /* UIButton+Addtion.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		507F3EAB481801A7B70A968D /* Pods-JJLoveSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJLoveSport.release.xcconfig"; path = "Pods/Target Support Files/Pods-JJLoveSport/Pods-JJLoveSport.release.xcconfig"; sourceTree = "<group>"; };
 		A41935571EC30B52003FA0FD /* JJLoveSport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJLoveSport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A419355B1EC30B52003FA0FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A419355D1EC30B52003FA0FD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -41,6 +47,19 @@
 		A41935A81EC3141E003FA0FD /* JJSportVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSportVC.m; sourceTree = "<group>"; };
 		A41935AD1EC3141E003FA0FD /* JJSportCicleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSportCicleVC.h; sourceTree = "<group>"; };
 		A41935AE1EC3141E003FA0FD /* JJSportCicleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSportCicleVC.m; sourceTree = "<group>"; };
+		A41935B91EC315FD003FA0FD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		A41935BA1EC3165D003FA0FD /* GlobalColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalColor.h; sourceTree = "<group>"; };
+		A41935BB1EC32255003FA0FD /* JJSportSupportVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSportSupportVC.h; sourceTree = "<group>"; };
+		A41935BC1EC32255003FA0FD /* JJSportSupportVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSportSupportVC.m; sourceTree = "<group>"; };
+		A41935BE1EC32290003FA0FD /* JJSportMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSportMapVC.h; sourceTree = "<group>"; };
+		A41935BF1EC32290003FA0FD /* JJSportMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSportMapVC.m; sourceTree = "<group>"; };
+		A41935C11EC322AD003FA0FD /* JJSportTrackingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSportTrackingModel.h; sourceTree = "<group>"; };
+		A41935C21EC322AD003FA0FD /* JJSportTrackingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSportTrackingModel.m; sourceTree = "<group>"; };
+		A41935C61EC32F33003FA0FD /* UIButton+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Addtion.h"; sourceTree = "<group>"; };
+		A41935C71EC32F33003FA0FD /* UIButton+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Addtion.m"; sourceTree = "<group>"; };
+		A41935C91EC33117003FA0FD /* JJAddtionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJAddtionHeader.h; sourceTree = "<group>"; };
+		E4E06A0B614745D52C1F0E2C /* Pods-JJLoveSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJLoveSport.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJLoveSport/Pods-JJLoveSport.debug.xcconfig"; sourceTree = "<group>"; };
+		FDD2E7C332FD65F3C41B0900 /* libPods-JJLoveSport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JJLoveSport.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,17 +67,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53182B2F008362EFE74321C3 /* libPods-JJLoveSport.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F0DAF60903BFAB8D3501A3F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FDD2E7C332FD65F3C41B0900 /* libPods-JJLoveSport.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A419354E1EC30B52003FA0FD = {
 			isa = PBXGroup;
 			children = (
 				A41935591EC30B52003FA0FD /* JJLoveSport */,
 				A41935581EC30B52003FA0FD /* Products */,
+				C9183A74180C47EDFAD174AC /* Pods */,
+				4F0DAF60903BFAB8D3501A3F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -180,7 +210,10 @@
 		A419359D1EC3141E003FA0FD /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				A41935C51EC32F18003FA0FD /* JJAddtions */,
 				A419359E1EC3141E003FA0FD /* Controllers.json */,
+				A41935B91EC315FD003FA0FD /* PrefixHeader.pch */,
+				A41935BA1EC3165D003FA0FD /* GlobalColor.h */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -233,6 +266,10 @@
 			children = (
 				A41935A71EC3141E003FA0FD /* JJSportVC.h */,
 				A41935A81EC3141E003FA0FD /* JJSportVC.m */,
+				A41935BB1EC32255003FA0FD /* JJSportSupportVC.h */,
+				A41935BC1EC32255003FA0FD /* JJSportSupportVC.m */,
+				A41935BE1EC32290003FA0FD /* JJSportMapVC.h */,
+				A41935BF1EC32290003FA0FD /* JJSportMapVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -240,6 +277,8 @@
 		A41935A91EC3141E003FA0FD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A41935C11EC322AD003FA0FD /* JJSportTrackingModel.h */,
+				A41935C21EC322AD003FA0FD /* JJSportTrackingModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -296,6 +335,25 @@
 			name = Default;
 			sourceTree = "<group>";
 		};
+		A41935C51EC32F18003FA0FD /* JJAddtions */ = {
+			isa = PBXGroup;
+			children = (
+				A41935C91EC33117003FA0FD /* JJAddtionHeader.h */,
+				A41935C61EC32F33003FA0FD /* UIButton+Addtion.h */,
+				A41935C71EC32F33003FA0FD /* UIButton+Addtion.m */,
+			);
+			path = JJAddtions;
+			sourceTree = "<group>";
+		};
+		C9183A74180C47EDFAD174AC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E4E06A0B614745D52C1F0E2C /* Pods-JJLoveSport.debug.xcconfig */,
+				507F3EAB481801A7B70A968D /* Pods-JJLoveSport.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -303,9 +361,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A419356E1EC30B53003FA0FD /* Build configuration list for PBXNativeTarget "JJLoveSport" */;
 			buildPhases = (
+				320E2EBD7610066934596D71 /* [CP] Check Pods Manifest.lock */,
 				A41935531EC30B52003FA0FD /* Sources */,
 				A41935541EC30B52003FA0FD /* Frameworks */,
 				A41935551EC30B52003FA0FD /* Resources */,
+				035F721E185FB2C00BEA346C /* [CP] Embed Pods Frameworks */,
+				04AB9D00EDC3513D9E7B978A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -327,7 +388,8 @@
 				TargetAttributes = {
 					A41935561EC30B52003FA0FD = {
 						CreatedOnToolsVersion = 8.3.2;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 836V4V67ZD;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -362,12 +424,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		035F721E185FB2C00BEA346C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JJLoveSport/Pods-JJLoveSport-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		04AB9D00EDC3513D9E7B978A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JJLoveSport/Pods-JJLoveSport-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		320E2EBD7610066934596D71 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A41935531EC30B52003FA0FD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A41935B71EC3141E003FA0FD /* JJSportCicleVC.m in Sources */,
+				A41935C31EC322AD003FA0FD /* JJSportTrackingModel.m in Sources */,
 				A41935B21EC3141E003FA0FD /* JJTabBarVC.m in Sources */,
 				A41935B31EC3141E003FA0FD /* JJMessageVC.m in Sources */,
 				A41935B61EC3141E003FA0FD /* JJSportVC.m in Sources */,
@@ -375,6 +486,9 @@
 				A419355F1EC30B52003FA0FD /* AppDelegate.m in Sources */,
 				A41935B11EC3141E003FA0FD /* JJDiscoverVC.m in Sources */,
 				A419355C1EC30B52003FA0FD /* main.m in Sources */,
+				A41935C81EC32F33003FA0FD /* UIButton+Addtion.m in Sources */,
+				A41935C01EC32290003FA0FD /* JJSportMapVC.m in Sources */,
+				A41935BD1EC32255003FA0FD /* JJSportSupportVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,23 +600,34 @@
 		};
 		A419356F1EC30B53003FA0FD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4E06A0B614745D52C1F0E2C /* Pods-JJLoveSport.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 836V4V67ZD;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = $SRCROOT/$PRODUCT_NAME/Class/Other/PrefixHeader.pch;
 				INFOPLIST_FILE = JJLoveSport/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.luowenqi.JJLoveSport;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios9qi.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c49841ee-0244-4e34-97ac-846a86f22efe";
+				PROVISIONING_PROFILE_SPECIFIER = jiuqi.dev;
 			};
 			name = Debug;
 		};
 		A41935701EC30B53003FA0FD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 507F3EAB481801A7B70A968D /* Pods-JJLoveSport.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = $SRCROOT/$PRODUCT_NAME/Class/Other/PrefixHeader.pch;
 				INFOPLIST_FILE = JJLoveSport/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.luowenqi.JJLoveSport;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios9qi.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

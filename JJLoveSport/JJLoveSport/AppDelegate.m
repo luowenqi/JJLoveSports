@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "JJTabBarVC.h"
+#import <AMapFoundationKit/AMapFoundationKit.h>
 
 @interface AppDelegate ()
 
@@ -18,12 +19,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [[AMapServices sharedServices] setEnableHTTPS:YES];
+    
+    [AMapServices sharedServices].apiKey = @"bfe811a1387b41ef6a68dcf717d0afd1";
+    
     self.window = [[UIWindow alloc]init];
     
     JJTabBarVC* tabBarVC = [[JJTabBarVC alloc]init];
     
     
     self.window.rootViewController = tabBarVC;
+    
+    //设置全局的tabBar的颜色
+    [[UITabBar appearance]setTintColor:KGlobalGreen];
+    
+    //设置默认选中运动模块
+    tabBarVC.selectedIndex = 2;
     
     [self.window makeKeyAndVisible];
     

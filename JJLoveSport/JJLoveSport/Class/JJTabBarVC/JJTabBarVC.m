@@ -56,14 +56,14 @@
         VC.view.backgroundColor = [UIColor whiteColor];
         //放到导航控制器里面
         UINavigationController* nav = [[UINavigationController alloc]initWithRootViewController:VC];
+        
         [self.controllers addObject:nav];
         //设置文字
         VC.title = jsonArray[i][@"title"];
         //设置不同状态下的图片
         VC.tabBarItem.image = [[UIImage imageNamed:jsonArray[i][@"imageName"]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         VC.tabBarItem.selectedImage = [[UIImage imageNamed:jsonArray[i][@"selectImageName"]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        //设置tabBar的字体颜色
-//        [VC.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:KGlobalGreen} forState:UIControlStateSelected];
+
     }
 }
 
