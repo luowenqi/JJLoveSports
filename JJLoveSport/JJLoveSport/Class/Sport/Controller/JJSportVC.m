@@ -7,6 +7,7 @@
 //
 
 #import "JJSportVC.h"
+#import "JJSportSupportVC.h"
 
 #define BASETAG 50
 #define MarginTop 20
@@ -118,9 +119,9 @@
 
 #pragma mark - 开始运动
 -(void)startSport:(UIButton* )sender{
-
-    
-    
+  
+    JJSportSupportVC* sportSupportVC = [[JJSportSupportVC alloc]init];
+    [self presentViewController:sportSupportVC animated:YES completion:nil];
 
 }
 

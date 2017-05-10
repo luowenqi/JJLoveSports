@@ -16,22 +16,47 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self setupUI];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - 设置界面
+-(void)setupUI{
+
+    //添加地图视图
+    [self addMapView];
+    
+    //添加支持视图
+    [self addSupportView];
+   
+    
+
+  
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - 添加支持视图
+-(void)addSupportView{
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    UIView* supportView = [[UIView alloc]init];
+    [self.view addSubview:supportView];
+    [supportView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self.view);
+        make.height.mas_offset(64);
+    }];
+    supportView.backgroundColor = [UIColor yellowColor];
 }
-*/
+
+
+
+#pragma mark - 添加抽屉视图
+-(void)addMapView{
+    //使用父子控制器的方式把另外一个控制器加进来
+    JJSportMapVC* mapVC = [[JJSportMapVC alloc]init];
+    [self addChildViewController:mapVC];
+    [self.view addSubview:mapVC.view];
+    [mapVC didMoveToParentViewController:self];
+    //设置mapVC.view的大小
+    mapVC.view.frame = CGRectMake(0, 0, ScreenWidth, ScreenHight - 64);
+
+}
 
 @end
