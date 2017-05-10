@@ -1,0 +1,34 @@
+
+[
+  {
+    "className" : "JJSportCicleVC",
+    "title" : "运动圈",
+    "imageName" : "ic_tab_circle_normal_22x22_",
+    "selectImageName" : "ic_tab_circle_selected_22x22_"
+    },
+ {
+ "className" : "JJDiscoverVC",
+ "title" : "发现",
+ "imageName" : "ic_tab_discovered_normal_22x22_",
+ "selectImageName" : "ic_tab_discovered_selected_22x22_"
+ },
+ {
+ "className" : "JJSportVC",
+ "title" : "运动",
+ "imageName" : "ic_tab_sports_normal_22x22_",
+ "selectImageName" : "ic_tab_sports_selected_22x22_"
+ },
+  {
+    "className" : "JJMessageVC",
+    "title" : "消息",
+    "imageName" : "ic_tab_message_normal_22x22_",
+   "selectImageName" : "ic_tab_message_selected_22x22_-1"
+  },
+ 
+  {
+    "className" : "JJProfileVC",
+    "title" : "我",
+    "imageName" : "ic_tab_mine_normal_22x22_",
+   "selectImageName" : "ic_tab_mine_selected_22x22_"
+ }
+]

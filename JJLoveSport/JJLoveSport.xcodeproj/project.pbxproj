@@ -11,6 +11,13 @@
 		A419355F1EC30B52003FA0FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A419355E1EC30B52003FA0FD /* AppDelegate.m */; };
 		A41935671EC30B53003FA0FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A41935661EC30B53003FA0FD /* Assets.xcassets */; };
 		A419356A1EC30B53003FA0FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A41935681EC30B53003FA0FD /* LaunchScreen.storyboard */; };
+		A41935B11EC3141E003FA0FD /* JJDiscoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935911EC3141E003FA0FD /* JJDiscoverVC.m */; };
+		A41935B21EC3141E003FA0FD /* JJTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935961EC3141E003FA0FD /* JJTabBarVC.m */; };
+		A41935B31EC3141E003FA0FD /* JJMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A419359A1EC3141E003FA0FD /* JJMessageVC.m */; };
+		A41935B41EC3141E003FA0FD /* Controllers.json in Resources */ = {isa = PBXBuildFile; fileRef = A419359E1EC3141E003FA0FD /* Controllers.json */; };
+		A41935B51EC3141E003FA0FD /* JJProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935A21EC3141E003FA0FD /* JJProfileVC.m */; };
+		A41935B61EC3141E003FA0FD /* JJSportVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935A81EC3141E003FA0FD /* JJSportVC.m */; };
+		A41935B71EC3141E003FA0FD /* JJSportCicleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935AE1EC3141E003FA0FD /* JJSportCicleVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +28,19 @@
 		A41935661EC30B53003FA0FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A41935691EC30B53003FA0FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A419356B1EC30B53003FA0FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A41935901EC3141E003FA0FD /* JJDiscoverVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJDiscoverVC.h; sourceTree = "<group>"; };
+		A41935911EC3141E003FA0FD /* JJDiscoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJDiscoverVC.m; sourceTree = "<group>"; };
+		A41935951EC3141E003FA0FD /* JJTabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJTabBarVC.h; sourceTree = "<group>"; };
+		A41935961EC3141E003FA0FD /* JJTabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJTabBarVC.m; sourceTree = "<group>"; };
+		A41935991EC3141E003FA0FD /* JJMessageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJMessageVC.h; sourceTree = "<group>"; };
+		A419359A1EC3141E003FA0FD /* JJMessageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJMessageVC.m; sourceTree = "<group>"; };
+		A419359E1EC3141E003FA0FD /* Controllers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Controllers.json; sourceTree = "<group>"; };
+		A41935A11EC3141E003FA0FD /* JJProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJProfileVC.h; sourceTree = "<group>"; };
+		A41935A21EC3141E003FA0FD /* JJProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJProfileVC.m; sourceTree = "<group>"; };
+		A41935A71EC3141E003FA0FD /* JJSportVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSportVC.h; sourceTree = "<group>"; };
+		A41935A81EC3141E003FA0FD /* JJSportVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSportVC.m; sourceTree = "<group>"; };
+		A41935AD1EC3141E003FA0FD /* JJSportCicleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSportCicleVC.h; sourceTree = "<group>"; };
+		A41935AE1EC3141E003FA0FD /* JJSportCicleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSportCicleVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,11 +73,8 @@
 		A41935591EC30B52003FA0FD /* JJLoveSport */ = {
 			isa = PBXGroup;
 			children = (
-				A419355D1EC30B52003FA0FD /* AppDelegate.h */,
-				A419355E1EC30B52003FA0FD /* AppDelegate.m */,
-				A41935661EC30B53003FA0FD /* Assets.xcassets */,
-				A41935681EC30B53003FA0FD /* LaunchScreen.storyboard */,
-				A419356B1EC30B53003FA0FD /* Info.plist */,
+				A419358D1EC3141E003FA0FD /* Class */,
+				A41935B81EC314F7003FA0FD /* Default */,
 				A419355A1EC30B52003FA0FD /* Supporting Files */,
 			);
 			path = JJLoveSport;
@@ -69,6 +86,214 @@
 				A419355B1EC30B52003FA0FD /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A419358D1EC3141E003FA0FD /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				A41935A51EC3141E003FA0FD /* Sport */,
+				A419359D1EC3141E003FA0FD /* Other */,
+				A419358E1EC3141E003FA0FD /* Discover */,
+				A41935941EC3141E003FA0FD /* JJTabBarVC */,
+				A41935971EC3141E003FA0FD /* Message */,
+				A419359F1EC3141E003FA0FD /* Profile */,
+				A41935AB1EC3141E003FA0FD /* SportCicle */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		A419358E1EC3141E003FA0FD /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				A419358F1EC3141E003FA0FD /* Controller */,
+				A41935921EC3141E003FA0FD /* Model */,
+				A41935931EC3141E003FA0FD /* View */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		A419358F1EC3141E003FA0FD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A41935901EC3141E003FA0FD /* JJDiscoverVC.h */,
+				A41935911EC3141E003FA0FD /* JJDiscoverVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A41935921EC3141E003FA0FD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A41935931EC3141E003FA0FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A41935941EC3141E003FA0FD /* JJTabBarVC */ = {
+			isa = PBXGroup;
+			children = (
+				A41935951EC3141E003FA0FD /* JJTabBarVC.h */,
+				A41935961EC3141E003FA0FD /* JJTabBarVC.m */,
+			);
+			path = JJTabBarVC;
+			sourceTree = "<group>";
+		};
+		A41935971EC3141E003FA0FD /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				A41935981EC3141E003FA0FD /* Controller */,
+				A419359B1EC3141E003FA0FD /* Model */,
+				A419359C1EC3141E003FA0FD /* View */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		A41935981EC3141E003FA0FD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A41935991EC3141E003FA0FD /* JJMessageVC.h */,
+				A419359A1EC3141E003FA0FD /* JJMessageVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A419359B1EC3141E003FA0FD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A419359C1EC3141E003FA0FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A419359D1EC3141E003FA0FD /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				A419359E1EC3141E003FA0FD /* Controllers.json */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		A419359F1EC3141E003FA0FD /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A41935A01EC3141E003FA0FD /* Controller */,
+				A41935A31EC3141E003FA0FD /* Model */,
+				A41935A41EC3141E003FA0FD /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		A41935A01EC3141E003FA0FD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A41935A11EC3141E003FA0FD /* JJProfileVC.h */,
+				A41935A21EC3141E003FA0FD /* JJProfileVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A41935A31EC3141E003FA0FD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A41935A41EC3141E003FA0FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A41935A51EC3141E003FA0FD /* Sport */ = {
+			isa = PBXGroup;
+			children = (
+				A41935A61EC3141E003FA0FD /* Controller */,
+				A41935A91EC3141E003FA0FD /* Model */,
+				A41935AA1EC3141E003FA0FD /* View */,
+			);
+			path = Sport;
+			sourceTree = "<group>";
+		};
+		A41935A61EC3141E003FA0FD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A41935A71EC3141E003FA0FD /* JJSportVC.h */,
+				A41935A81EC3141E003FA0FD /* JJSportVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A41935A91EC3141E003FA0FD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A41935AA1EC3141E003FA0FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A41935AB1EC3141E003FA0FD /* SportCicle */ = {
+			isa = PBXGroup;
+			children = (
+				A41935AC1EC3141E003FA0FD /* Controller */,
+				A41935AF1EC3141E003FA0FD /* Model */,
+				A41935B01EC3141E003FA0FD /* View */,
+			);
+			path = SportCicle;
+			sourceTree = "<group>";
+		};
+		A41935AC1EC3141E003FA0FD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A41935AD1EC3141E003FA0FD /* JJSportCicleVC.h */,
+				A41935AE1EC3141E003FA0FD /* JJSportCicleVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A41935AF1EC3141E003FA0FD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A41935B01EC3141E003FA0FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A41935B81EC314F7003FA0FD /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				A419355D1EC30B52003FA0FD /* AppDelegate.h */,
+				A419355E1EC30B52003FA0FD /* AppDelegate.m */,
+				A41935661EC30B53003FA0FD /* Assets.xcassets */,
+				A41935681EC30B53003FA0FD /* LaunchScreen.storyboard */,
+				A419356B1EC30B53003FA0FD /* Info.plist */,
+			);
+			name = Default;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A419356A1EC30B53003FA0FD /* LaunchScreen.storyboard in Resources */,
+				A41935B41EC3141E003FA0FD /* Controllers.json in Resources */,
 				A41935671EC30B53003FA0FD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,7 +367,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A41935B71EC3141E003FA0FD /* JJSportCicleVC.m in Sources */,
+				A41935B21EC3141E003FA0FD /* JJTabBarVC.m in Sources */,
+				A41935B31EC3141E003FA0FD /* JJMessageVC.m in Sources */,
+				A41935B61EC3141E003FA0FD /* JJSportVC.m in Sources */,
+				A41935B51EC3141E003FA0FD /* JJProfileVC.m in Sources */,
 				A419355F1EC30B52003FA0FD /* AppDelegate.m in Sources */,
+				A41935B11EC3141E003FA0FD /* JJDiscoverVC.m in Sources */,
 				A419355C1EC30B52003FA0FD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
