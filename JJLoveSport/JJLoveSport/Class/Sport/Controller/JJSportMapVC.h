@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JJSportTrackingModel.h"
+
+
 
 @interface JJSportMapVC : UIViewController
+
+@property(nonatomic , strong) JJSportTrackingModel* trackingModel;
 
 @end

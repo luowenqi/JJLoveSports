@@ -25,4 +25,9 @@
 #import <Masonry.h>
 
 
+#import "JJSportTrackingModel.h"
+
+
+
+
 #endif /* PrefixHeader_pch */

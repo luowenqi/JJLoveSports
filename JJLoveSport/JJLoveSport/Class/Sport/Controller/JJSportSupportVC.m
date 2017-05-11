@@ -27,10 +27,7 @@
     
     //添加支持视图
     [self addSupportView];
-   
-    
 
-  
 }
 
 #pragma mark - 添加支持视图
@@ -47,7 +44,7 @@
 
 
 
-#pragma mark - 添加抽屉视图
+#pragma mark - 添加地图
 -(void)addMapView{
     //使用父子控制器的方式把另外一个控制器加进来
     JJSportMapVC* mapVC = [[JJSportMapVC alloc]init];
@@ -56,6 +53,10 @@
     [mapVC didMoveToParentViewController:self];
     //设置mapVC.view的大小
     mapVC.view.frame = CGRectMake(0, 0, ScreenWidth, ScreenHight - 64);
+
+    mapVC.trackingModel = [[JJSportTrackingModel alloc]initWithSportType:self.sportType];
+    
+   
 
 }
 

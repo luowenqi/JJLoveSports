@@ -17,6 +17,19 @@ typedef enum : NSUInteger {
 
 @interface JJSportTrackingModel : NSObject
 
-@property(nonatomic , assign) JJSportType * sportType;
+
+/**
+ 运动类型
+ */
+@property(nonatomic , assign) JJSportType sportType;
+
+
+/**
+ 运动类型图片
+ */
+@property(nonatomic , strong) UIImage * sportTpyeImage;
+
+
+-(instancetype)initWithSportType:(JJSportType)sportType;
 
 @end

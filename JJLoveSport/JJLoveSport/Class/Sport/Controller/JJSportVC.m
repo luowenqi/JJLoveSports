@@ -45,11 +45,11 @@
  */
 @property(nonatomic , strong) NSArray<NSString*> * btnImageNames;
 
-
 /**
  当前运动类型
  */
 @property(nonatomic , assign) NSInteger  currentSportType;
+
 
 @end
 
@@ -57,6 +57,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     
     [self setupUI];
 }
@@ -124,10 +125,12 @@
 #pragma mark - 开始运动
 -(void)startSport:(UIButton* )sender{
     
-    
-    
-  
+
     JJSportSupportVC* sportSupportVC = [[JJSportSupportVC alloc]init];
+    
+    sportSupportVC.sportType = self.currentSportType;
+  
+    
     [self presentViewController:sportSupportVC animated:YES completion:nil];
 
 }
@@ -156,7 +159,7 @@
         
         [_sportTypes addObject:button];
         [self.view addSubview:button];
-        button.tag = i + BASETAG + 1;
+        button.tag = i + BASETAG ;
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.view).offset(MarginTop);
             make.left.equalTo(self.view).offset(MarginLeft);
@@ -169,10 +172,7 @@
     [_choiceSportTypButton setImage:[UIImage imageNamed:@"ic_sport_type_close_44x44_"] forState:UIControlStateSelected];
     
     [_sportTypes removeLastObject];
-    
-    _currentSportType = 1;
-    
-
+  
 }
 
 
@@ -234,9 +234,8 @@
     
     [self choiceSportType];
     
-    _currentSportType = sender.tag - BASETAG + 1;
-    
-  
+    _currentSportType = sender.tag - BASETAG;
+
 }
 
 

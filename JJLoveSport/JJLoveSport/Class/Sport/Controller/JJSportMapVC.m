@@ -61,7 +61,7 @@
 
 -(void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation{
 
-    NSLog(@"%.f-----%.f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+   // NSLog(@"%.f-----%.f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     
     //判断是不是正在更新位置
     if (updatingLocation) {
@@ -101,7 +101,7 @@
         annotationView.animatesDrop = YES;        //设置标注动画显示，默认为NO
         annotationView.draggable = YES;        //设置标注可以拖动，默认为NO
   
-        UIImage *image= [UIImage imageNamed:@"map_annotation_bike.png"];
+        UIImage *image= self.trackingModel.sportTpyeImage;
         annotationView.image = image;
         
         //改变大头针位置偏移量,大头针往上移动图片一半的高度，让大头针下方的尖角处于默认大头针的中心点
