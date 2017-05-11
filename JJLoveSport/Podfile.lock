@@ -1,0 +1,26 @@
+PODS:
+  - AMap3DMap (4.1.0):
+    - AMapFoundation (~> 1.1)
+  - AMapFoundation (1.2.0)
+  - Masonry (1.0.1)
+  - SDWebImage (3.8.1):
+    - SDWebImage/Core (= 3.8.1)
+  - SDWebImage/Core (3.8.1)
+  - YYModel (1.0.4)
+
+DEPENDENCIES:
+  - AMap3DMap (~> 4.1.0)
+  - Masonry
+  - SDWebImage
+  - YYModel
+
+SPEC CHECKSUMS:
+  AMap3DMap: '048e1ef05ce87a486d6bf4f09a4e2285356b3a16'
+  AMapFoundation: 8acc2bf4eed79aab4d21002ddb8b24a6f3f3621c
+  Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
+
+PODFILE CHECKSUM: 78bfbb5c58ae3075feca4502ba60a17337b2d3f9
+
+COCOAPODS: 1.2.0

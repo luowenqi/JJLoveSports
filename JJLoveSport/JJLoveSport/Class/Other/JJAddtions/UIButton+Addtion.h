@@ -10,6 +10,6 @@
 
 @interface UIButton (Addtion)
 
--(instancetype)initWithTitle:(NSString*)titlet titleColor:(UIColor*)titleColor image:(NSString*)imageName selectImage:(NSString*)selectImageName addTarget:(nullable id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
+-(instancetype)initWithTitle:(NSString*)titlet titleColor:(UIColor*)titleColor image:(NSString*)imageName HightImageName:(NSString*)highlightedImageName addTarget:(nullable id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
 
 @end

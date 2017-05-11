@@ -98,14 +98,18 @@
 }
 
 
+#pragma mark - 创建开始运动按钮
 -(void)creatStartButton{
 
     
-    _startButton = [[UIButton alloc]initWithTitle:@"开始" titleColor:[UIColor whiteColor] image:@"btn_start_normal_118x118_" selectImage:@"btn_start_normal_118x118_" addTarget:self action:@selector(startSport:) forControlEvents:UIControlEventTouchUpInside];
 
-    _startButton.titleLabel.font = [UIFont systemFontOfSize:24];
+    _startButton = [[UIButton alloc]initWithTitle:@"开始" titleColor:[UIColor whiteColor] image:nil HightImageName:nil addTarget:self action:@selector(startSport:) forControlEvents:UIControlEventTouchUpInside];
+
+    [_startButton setBackgroundImage:[UIImage imageNamed:@"btn_start_normal_118x118_"] forState:UIControlStateNormal];
+     [_startButton setBackgroundImage:[UIImage imageNamed:@"btn_start_normal_118x118_"] forState:UIControlStateHighlighted];
     
-
+    _startButton.titleLabel.font = [UIFont systemFontOfSize:24];
+   
     [self.view addSubview:_startButton];
 
     [_startButton sizeToFit];
@@ -119,11 +123,22 @@
 
 #pragma mark - 开始运动
 -(void)startSport:(UIButton* )sender{
+    
+    
+    
   
     JJSportSupportVC* sportSupportVC = [[JJSportSupportVC alloc]init];
     [self presentViewController:sportSupportVC animated:YES completion:nil];
 
 }
+
+
+
+
+
+
+
+
 
 
 #pragma mark - 创建运动模块按钮
@@ -132,10 +147,10 @@
     for (NSInteger i = 0; i< _btnImageNames.count; i++) {
         UIButton* button = [[UIButton alloc]init];
         if (i == self.btnImageNames.count - 1) {
-            button = [[UIButton alloc]initWithTitle:nil titleColor:nil image:_btnImageNames[i] selectImage:_btnImageNames[i] addTarget:self action:@selector(choiceSportType) forControlEvents:UIControlEventTouchUpInside];
+            button = [[UIButton alloc]initWithTitle:nil titleColor:nil image:_btnImageNames[i] HightImageName:_btnImageNames[i] addTarget:self action:@selector(choiceSportType) forControlEvents:UIControlEventTouchUpInside];
         }else{
         
-             button = [[UIButton alloc]initWithTitle:nil titleColor:nil image:_btnImageNames[i] selectImage:_btnImageNames[i] addTarget:self action:@selector(chageSportType:) forControlEvents:UIControlEventTouchUpInside];
+             button = [[UIButton alloc]initWithTitle:nil titleColor:nil image:_btnImageNames[i] HightImageName:_btnImageNames[i] addTarget:self action:@selector(chageSportType:) forControlEvents:UIControlEventTouchUpInside];
         }
         
         

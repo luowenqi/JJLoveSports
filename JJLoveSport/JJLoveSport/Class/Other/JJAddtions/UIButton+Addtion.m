@@ -11,14 +11,14 @@
 @implementation UIButton (Addtion)
 
 
--(instancetype)initWithTitle:(NSString*)titlet titleColor:(UIColor*)titleColor image:(NSString*)imageName selectImage:(NSString*)selectImageName addTarget:(nullable id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents{
+-(instancetype)initWithTitle:(NSString*)titlet titleColor:(UIColor*)titleColor image:(NSString*)imageName HightImageName:(NSString*)highlightedImageName addTarget:(nullable id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;{
 
     if (self = [super init]) {
         
         [self setTitle:titlet forState:UIControlStateNormal];
         [self setTitleColor:titleColor forState:UIControlStateNormal];
         [self setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-        [self setImage:[UIImage imageNamed:selectImageName] forState:UIControlStateHighlighted];
+        [self setImage:[UIImage imageNamed:highlightedImageName] forState:UIControlStateHighlighted];
         [self addTarget:target action:action forControlEvents:controlEvents];
         self.contentMode = UIViewContentModeScaleToFill;
     }
