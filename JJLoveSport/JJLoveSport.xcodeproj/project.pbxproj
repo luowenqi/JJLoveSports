@@ -23,6 +23,7 @@
 		A41935C01EC32290003FA0FD /* JJSportMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935BF1EC32290003FA0FD /* JJSportMapVC.m */; };
 		A41935C31EC322AD003FA0FD /* JJSportTrackingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935C21EC322AD003FA0FD /* JJSportTrackingModel.m */; };
 		A41935C81EC32F33003FA0FD /* UIButton+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935C71EC32F33003FA0FD /* UIButton+Addtion.m */; };
+		A4DF52A91EC4B5A30024B22E /* JJSportPolylineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DF52A81EC4B5A30024B22E /* JJSportPolylineModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,9 @@
 		A41935C61EC32F33003FA0FD /* UIButton+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Addtion.h"; sourceTree = "<group>"; };
 		A41935C71EC32F33003FA0FD /* UIButton+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Addtion.m"; sourceTree = "<group>"; };
 		A41935C91EC33117003FA0FD /* JJAddtionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJAddtionHeader.h; sourceTree = "<group>"; };
+		A4DF52A71EC4B5A30024B22E /* JJSportPolylineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSportPolylineModel.h; sourceTree = "<group>"; };
+		A4DF52A81EC4B5A30024B22E /* JJSportPolylineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSportPolylineModel.m; sourceTree = "<group>"; };
+		A4DF52AA1EC560200024B22E /* GlobalImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalImage.h; sourceTree = "<group>"; };
 		E4E06A0B614745D52C1F0E2C /* Pods-JJLoveSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJLoveSport.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJLoveSport/Pods-JJLoveSport.debug.xcconfig"; sourceTree = "<group>"; };
 		FDD2E7C332FD65F3C41B0900 /* libPods-JJLoveSport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JJLoveSport.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -214,6 +218,7 @@
 				A419359E1EC3141E003FA0FD /* Controllers.json */,
 				A41935B91EC315FD003FA0FD /* PrefixHeader.pch */,
 				A41935BA1EC3165D003FA0FD /* GlobalColor.h */,
+				A4DF52AA1EC560200024B22E /* GlobalImage.h */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -279,6 +284,8 @@
 			children = (
 				A41935C11EC322AD003FA0FD /* JJSportTrackingModel.h */,
 				A41935C21EC322AD003FA0FD /* JJSportTrackingModel.m */,
+				A4DF52A71EC4B5A30024B22E /* JJSportPolylineModel.h */,
+				A4DF52A81EC4B5A30024B22E /* JJSportPolylineModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -488,6 +495,7 @@
 				A41935B31EC3141E003FA0FD /* JJMessageVC.m in Sources */,
 				A41935B61EC3141E003FA0FD /* JJSportVC.m in Sources */,
 				A41935B51EC3141E003FA0FD /* JJProfileVC.m in Sources */,
+				A4DF52A91EC4B5A30024B22E /* JJSportPolylineModel.m in Sources */,
 				A419355F1EC30B52003FA0FD /* AppDelegate.m in Sources */,
 				A41935B11EC3141E003FA0FD /* JJDiscoverVC.m in Sources */,
 				A419355C1EC30B52003FA0FD /* main.m in Sources */,

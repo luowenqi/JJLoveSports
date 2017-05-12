@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JJSportTrackingModel.h"
 
 @interface JJSportVC : UIViewController
 

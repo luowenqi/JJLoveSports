@@ -7,26 +7,46 @@
 //
 
 #import "JJSportTrackingModel.h"
+#import "JJSportPolylineModel.h"
+
+@interface JJSportTrackingModel ()
 
 
+
+/**
+ 运动单个线条集合
+ */
+@property(nonatomic , strong) NSMutableArray * polyLineModelArray;
+
+
+/**
+ 运动开始位置
+ */
+@property(nonatomic , strong) CLLocation * startLocation;
+
+
+/**
+ 运动中上一个位置(也可以作为最终的位置)
+ */
+@property(nonatomic , strong) CLLocation * lastLocation;
+
+
+@end
 
 @implementation JJSportTrackingModel
 
 
 -(UIImage*)sportTpyeImage{
-    
-
     UIImage* image = [[UIImage alloc]init];
     switch (self.sportType) {
         case JJSportTypeRun:
- 
-            image = [UIImage imageNamed:@"ic_history_run_normal_54x54_"];
+             image = [UIImage imageNamed:KGlobalSportTypeImageNames[0]];
             break;
         case JJSJJSportWalk:
-            image = [UIImage imageNamed:@"ic_history_walk_normal_54x54_"];
+            image = [UIImage imageNamed:KGlobalSportTypeImageNames[1]];
             break;
         case JJSJJSportRiding:
-            image = [UIImage imageNamed:@"ic_history_riding_normal_54x54_"];
+            image = [UIImage imageNamed:KGlobalSportTypeImageNames[2]];
             break;
   
         default:
@@ -43,10 +63,81 @@
 
     if (self = [super init]) {
         self.sportType = sportType;
+        self.polyLineModelArray = [NSMutableArray array];
     }
 
     return self;
 }
 
 
+#pragma mark - 绘制线条
+-(MAPolyline*)drawPolylineWithLocation:(CLLocation*)location{
+    
+    //速度优化算法,防止用户在静止的时候练习画线,消耗性能,并且出现大点
+    if (location.speed <= 0) {
+        return nil;
+    }
+    
+    
+    //时间优化算法  如果当前的时间和卫星发现当前设备的时间相差太久,也就是信号很不好的时候,停止画线,因为这时候画线也是不准确的
+    if ([[NSDate date] timeIntervalSinceDate:location.timestamp] >= 2) {
+        return nil;
+    }
+    
+    if (self.startLocation == nil) {
+        self.startLocation = location;
+        self.lastLocation = location;
+    }
+    JJSportPolylineModel* polyLineModel = [[JJSportPolylineModel alloc]initWithStartLocation:self.lastLocation endLocation:location];
+    [self.polyLineModelArray addObject:polyLineModel];
+    self.lastLocation = location;
+    self.currentColor = polyLineModel.color;
+    return polyLineModel.polyLine;
+}
+
+
+
+-(CGFloat)totalTime{
+
+    return [[self.polyLineModelArray valueForKeyPath:@"@sum.time"] floatValue];
+}
+
+-(CGFloat)totalDistance{
+    return [[self.polyLineModelArray valueForKeyPath:@"@sum.distance"] floatValue];
+}
+
+-(CGFloat)avgSpeed{
+    return [[self.polyLineModelArray valueForKeyPath:@"@avg.speed"] floatValue];
+}
+
+-(NSString*)totalTimeString{
+  
+    int hour = (int)self.totalTime / 3600;
+    int minute = (int)self.totalTime % 3600 /60;
+    int second = (int)self.totalTime % 60 ;
+    return [NSString stringWithFormat:@"本次运动一共用时 %d小时 %d分钟 %d秒",hour,minute,second];
+    return nil;
+}
+
+-(CGFloat)maxSpeed{
+    return [[self.polyLineModelArray valueForKeyPath:@"@max.speed"] floatValue];
+}
+
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

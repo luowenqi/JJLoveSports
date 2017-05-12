@@ -63,6 +63,13 @@
 
    // NSLog(@"%.f-----%.f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     
+    //三滤波算法
+    static NSInteger flage = 1;
+    if (flage <= 3) {
+        flage++;
+        return;
+    }
+    
     //判断是不是正在更新位置
     if (updatingLocation) {
         
@@ -78,7 +85,38 @@
             [mapView addAnnotation:pointAnnotation];
         }
     }
+
+    
+    //创建模型
+    //在地图上添加折线对象
+    [_mapView addOverlay:[_trackingModel drawPolylineWithLocation:userLocation.location]];
+    //设置用户位置为地图中心位置
+    [_mapView setCenterCoordinate:_mapView.userLocation.coordinate animated:YES];
+    
+    NSLog(@"%@",_trackingModel.totalTimeString);
+    NSLog(@"运动距离%f",_trackingModel.totalDistance);
+    NSLog(@"运动最大速度%f",_trackingModel.maxSpeed);
+    NSLog(@"运动平均速度-------------------%f",_trackingModel.avgSpeed);
 }
+
+
+#pragma mark - 设置折线的样式
+- (MAOverlayRenderer *)mapView:(MAMapView *)mapView rendererForOverlay:(id <MAOverlay>)overlay
+{
+    if ([overlay isKindOfClass:[MAPolyline class]])
+    {
+        MAPolylineRenderer *polylineRenderer = [[MAPolylineRenderer alloc] initWithPolyline:overlay];
+        
+        polylineRenderer.lineWidth    = 8.f;
+        polylineRenderer.strokeColor  = _trackingModel.currentColor;
+        polylineRenderer.lineJoinType = kMALineJoinRound;
+        polylineRenderer.lineCapType  = kMALineCapRound;
+        return polylineRenderer;
+    }
+    return nil;
+}
+
+
 
 
 /**

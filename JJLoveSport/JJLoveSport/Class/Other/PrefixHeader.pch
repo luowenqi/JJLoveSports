@@ -13,6 +13,7 @@
 #define ScreenHight [UIScreen mainScreen].bounds.size.height
 
 
+#import "GlobalImage.h"  //全局图片
 
 #import "GlobalColor.h"  //全局颜色
 
@@ -26,6 +27,8 @@
 
 
 #import "JJSportTrackingModel.h"
+
+#import <MAMapKit/MAMapKit.h>
 
 
 

@@ -33,13 +33,15 @@
 #pragma mark - 添加支持视图
 -(void)addSupportView{
 
-    UIView* supportView = [[UIView alloc]init];
-    [self.view addSubview:supportView];
-    [supportView mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIBlurEffect *blureffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blureffect];
+   
+    [self.view addSubview:effectView];
+    [effectView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
-        make.height.mas_offset(64);
+        make.height.mas_offset(88);
     }];
-    supportView.backgroundColor = [UIColor yellowColor];
+   
 }
 
 
@@ -55,9 +57,6 @@
     mapVC.view.frame = CGRectMake(0, 0, ScreenWidth, ScreenHight - 64);
 
     mapVC.trackingModel = [[JJSportTrackingModel alloc]initWithSportType:self.sportType];
-    
-   
-
 }
 
 @end

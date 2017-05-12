@@ -10,6 +10,10 @@
 
 @interface JJSportSupportVC : UIViewController
 
+
+/**
+ 运动类型
+ */
 @property(nonatomic , assign) JJSportType  sportType;
 
 @end

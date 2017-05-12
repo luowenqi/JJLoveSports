@@ -40,15 +40,12 @@
 @property(nonatomic , strong) UIView * maskView;
 
 
-/**
- 运动类型按钮图片
- */
-@property(nonatomic , strong) NSArray<NSString*> * btnImageNames;
+
 
 /**
  当前运动类型
  */
-@property(nonatomic , assign) NSInteger  currentSportType;
+@property(nonatomic , assign) JJSportType  currentSportType;
 
 
 @end
@@ -78,11 +75,7 @@
 #pragma mark - 创建界面
 -(void)setupUI{
     
-    _btnImageNames  = @[ @"ic_history_run_normal_54x54_",
-                         @"ic_history_walk_normal_54x54_",
-                         @"ic_history_riding_normal_54x54_",
-                         @"ic_history_run_normal_54x54_"
-                         ];
+
     
     self.sportTypes = [NSMutableArray array];
 
@@ -106,7 +99,7 @@
 
     _startButton = [[UIButton alloc]initWithTitle:@"开始" titleColor:[UIColor whiteColor] image:nil HightImageName:nil addTarget:self action:@selector(startSport:) forControlEvents:UIControlEventTouchUpInside];
 
-    [_startButton setBackgroundImage:[UIImage imageNamed:@"btn_start_normal_118x118_"] forState:UIControlStateNormal];
+     [_startButton setBackgroundImage:[UIImage imageNamed:@"btn_start_normal_118x118_"] forState:UIControlStateNormal];
      [_startButton setBackgroundImage:[UIImage imageNamed:@"btn_start_normal_118x118_"] forState:UIControlStateHighlighted];
     
     _startButton.titleLabel.font = [UIFont systemFontOfSize:24];
@@ -147,13 +140,13 @@
 #pragma mark - 创建运动模块按钮
 -(void)creatSportModelButton{
 
-    for (NSInteger i = 0; i< _btnImageNames.count; i++) {
+    for (NSInteger i = 0; i< (KGlobalSportTypeImageNames.count + 1 ); i++) {
         UIButton* button = [[UIButton alloc]init];
-        if (i == self.btnImageNames.count - 1) {
-            button = [[UIButton alloc]initWithTitle:nil titleColor:nil image:_btnImageNames[i] HightImageName:_btnImageNames[i] addTarget:self action:@selector(choiceSportType) forControlEvents:UIControlEventTouchUpInside];
+        if (i == KGlobalSportTypeImageNames.count) {
+            button = [[UIButton alloc]initWithTitle:nil titleColor:nil image:KGlobalSportTypeImageNames[0] HightImageName:KGlobalSportTypeImageNames[0] addTarget:self action:@selector(choiceSportType) forControlEvents:UIControlEventTouchUpInside];
         }else{
         
-             button = [[UIButton alloc]initWithTitle:nil titleColor:nil image:_btnImageNames[i] HightImageName:_btnImageNames[i] addTarget:self action:@selector(chageSportType:) forControlEvents:UIControlEventTouchUpInside];
+             button = [[UIButton alloc]initWithTitle:nil titleColor:nil image:KGlobalSportTypeImageNames[i] HightImageName:KGlobalSportTypeImageNames[i] addTarget:self action:@selector(chageSportType:) forControlEvents:UIControlEventTouchUpInside];
         }
         
         
@@ -230,7 +223,7 @@
 #pragma mark - 更换运动类型
 -(void)chageSportType:(UIButton*)sender{
     
-    [self.choiceSportTypButton setImage:[UIImage imageNamed:self.btnImageNames[sender.tag - BASETAG]] forState:UIControlStateNormal];
+    [self.choiceSportTypButton setImage:[UIImage imageNamed:KGlobalSportTypeImageNames[sender.tag - BASETAG]] forState:UIControlStateNormal];
     
     [self choiceSportType];
     

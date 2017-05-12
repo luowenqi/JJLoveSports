@@ -13,6 +13,10 @@
 
 @interface JJSportMapVC : UIViewController
 
+
+/**
+ 运动跟踪模型
+ */
 @property(nonatomic , strong) JJSportTrackingModel* trackingModel;
 
 @end

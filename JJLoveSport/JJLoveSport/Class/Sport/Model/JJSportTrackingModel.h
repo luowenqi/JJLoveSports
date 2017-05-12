@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MAMapKit/MAMapKit.h>
 
+
+
+@interface JJSportTrackingModel : NSObject
 
 typedef enum : NSUInteger {
     JJSportTypeRun,
@@ -15,8 +19,9 @@ typedef enum : NSUInteger {
     JJSJJSportRiding,
 } JJSportType;
 
-@interface JJSportTrackingModel : NSObject
 
+
+@property(nonatomic , strong)  UIColor * currentColor;
 
 /**
  运动类型
@@ -30,6 +35,77 @@ typedef enum : NSUInteger {
 @property(nonatomic , strong) UIImage * sportTpyeImage;
 
 
+
+/**
+指定初始化方法
+ */
 -(instancetype)initWithSportType:(JJSportType)sportType;
 
+
+/**
+进行线条的描绘
+ */
+-(MAPolyline*)drawPolylineWithLocation:(CLLocation*)location;
+
+
+/**
+ 单次运动的总时间
+ */
+@property(nonatomic , assign)  CGFloat totalTime;
+
+/**
+ 单词运动总距离
+ */
+@property(nonatomic , assign) CGFloat  totalDistance;
+
+
+/**
+ 单次运动的平均速度
+ */
+@property(nonatomic , assign) CGFloat  avgSpeed;
+
+
+/**
+ 单次运动的总时间
+ */
+@property(nonatomic , strong) NSString * totalTimeString;
+
+
+/**
+ 单次运动最大瞬时速度
+ */
+@property(nonatomic , assign) CGFloat  maxSpeed;
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
