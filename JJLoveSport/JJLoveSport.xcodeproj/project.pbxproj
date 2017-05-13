@@ -24,6 +24,9 @@
 		A41935C31EC322AD003FA0FD /* JJSportTrackingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935C21EC322AD003FA0FD /* JJSportTrackingModel.m */; };
 		A41935C81EC32F33003FA0FD /* UIButton+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935C71EC32F33003FA0FD /* UIButton+Addtion.m */; };
 		A4DF52A91EC4B5A30024B22E /* JJSportPolylineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DF52A81EC4B5A30024B22E /* JJSportPolylineModel.m */; };
+		A4DF52AD1EC566AD0024B22E /* UILabel+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DF52AC1EC566AD0024B22E /* UILabel+Addtion.m */; };
+		A4DF52B31EC5D8850024B22E /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DF52B21EC5D8850024B22E /* UIColor+Addition.m */; };
+		A4DF52B61EC5EC880024B22E /* JJSportMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DF52B51EC5EC880024B22E /* JJSportMaskView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +65,12 @@
 		A4DF52A71EC4B5A30024B22E /* JJSportPolylineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSportPolylineModel.h; sourceTree = "<group>"; };
 		A4DF52A81EC4B5A30024B22E /* JJSportPolylineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSportPolylineModel.m; sourceTree = "<group>"; };
 		A4DF52AA1EC560200024B22E /* GlobalImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalImage.h; sourceTree = "<group>"; };
+		A4DF52AB1EC566AD0024B22E /* UILabel+Addtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Addtion.h"; sourceTree = "<group>"; };
+		A4DF52AC1EC566AD0024B22E /* UILabel+Addtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Addtion.m"; sourceTree = "<group>"; };
+		A4DF52B11EC5D8850024B22E /* UIColor+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Addition.h"; sourceTree = "<group>"; };
+		A4DF52B21EC5D8850024B22E /* UIColor+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Addition.m"; sourceTree = "<group>"; };
+		A4DF52B41EC5EC880024B22E /* JJSportMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSportMaskView.h; sourceTree = "<group>"; };
+		A4DF52B51EC5EC880024B22E /* JJSportMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSportMaskView.m; sourceTree = "<group>"; };
 		E4E06A0B614745D52C1F0E2C /* Pods-JJLoveSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJLoveSport.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJLoveSport/Pods-JJLoveSport.debug.xcconfig"; sourceTree = "<group>"; };
 		FDD2E7C332FD65F3C41B0900 /* libPods-JJLoveSport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JJLoveSport.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -293,6 +302,8 @@
 		A41935AA1EC3141E003FA0FD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A4DF52B41EC5EC880024B22E /* JJSportMaskView.h */,
+				A4DF52B51EC5EC880024B22E /* JJSportMaskView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -348,6 +359,10 @@
 				A41935C91EC33117003FA0FD /* JJAddtionHeader.h */,
 				A41935C61EC32F33003FA0FD /* UIButton+Addtion.h */,
 				A41935C71EC32F33003FA0FD /* UIButton+Addtion.m */,
+				A4DF52AB1EC566AD0024B22E /* UILabel+Addtion.h */,
+				A4DF52AC1EC566AD0024B22E /* UILabel+Addtion.m */,
+				A4DF52B11EC5D8850024B22E /* UIColor+Addition.h */,
+				A4DF52B21EC5D8850024B22E /* UIColor+Addition.m */,
 			);
 			path = JJAddtions;
 			sourceTree = "<group>";
@@ -495,13 +510,16 @@
 				A41935B31EC3141E003FA0FD /* JJMessageVC.m in Sources */,
 				A41935B61EC3141E003FA0FD /* JJSportVC.m in Sources */,
 				A41935B51EC3141E003FA0FD /* JJProfileVC.m in Sources */,
+				A4DF52AD1EC566AD0024B22E /* UILabel+Addtion.m in Sources */,
 				A4DF52A91EC4B5A30024B22E /* JJSportPolylineModel.m in Sources */,
 				A419355F1EC30B52003FA0FD /* AppDelegate.m in Sources */,
+				A4DF52B31EC5D8850024B22E /* UIColor+Addition.m in Sources */,
 				A41935B11EC3141E003FA0FD /* JJDiscoverVC.m in Sources */,
 				A419355C1EC30B52003FA0FD /* main.m in Sources */,
 				A41935C81EC32F33003FA0FD /* UIButton+Addtion.m in Sources */,
 				A41935C01EC32290003FA0FD /* JJSportMapVC.m in Sources */,
 				A41935BD1EC32255003FA0FD /* JJSportSupportVC.m in Sources */,
+				A4DF52B61EC5EC880024B22E /* JJSportMaskView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -57,7 +57,13 @@
     
     
     [self setupUI];
+    
+    
+    
 }
+
+
+
 
 #pragma mark - 创建遮罩视图
 -(void)crearMaskView{
@@ -239,6 +245,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = KGlobalGreen;
+    [self startSport:nil];
 }
 
 

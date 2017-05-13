@@ -10,6 +10,8 @@
 #define JJAddtionHeader_h
 
 #import "UIButton+Addtion.h"
+#import "UILabel+Addtion.h"
+#import "UIColor+Addition.h"
 
 
 #endif /* JJAddtionHeader_h */

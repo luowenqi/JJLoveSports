@@ -13,14 +13,36 @@
 
 @interface JJSportTrackingModel : NSObject
 
+//运动类型
 typedef enum : NSUInteger {
     JJSportTypeRun,
     JJSJJSportWalk,
     JJSJJSportRiding,
 } JJSportType;
 
+//运动状态
+typedef enum : NSUInteger {
+    JJSportStatePause,
+    JJSportStateContinue,
+    JJSportStateFinish,
+} JJSportState;
 
 
+/**
+ 指定初始化方法
+ */
+-(instancetype)initWithSportType:(JJSportType)sportType sportState:(JJSportState)sportState;
+
+
+/**
+ 可用初始化方法
+ */
+-(instancetype)initWithSportType:(JJSportType)sportType;
+
+
+/**
+ 当前颜色
+ */
 @property(nonatomic , strong)  UIColor * currentColor;
 
 /**
@@ -33,13 +55,6 @@ typedef enum : NSUInteger {
  运动类型图片
  */
 @property(nonatomic , strong) UIImage * sportTpyeImage;
-
-
-
-/**
-指定初始化方法
- */
--(instancetype)initWithSportType:(JJSportType)sportType;
 
 
 /**
@@ -75,6 +90,12 @@ typedef enum : NSUInteger {
  单次运动最大瞬时速度
  */
 @property(nonatomic , assign) CGFloat  maxSpeed;
+
+
+/**
+ 运动状态
+ */
+@property(nonatomic , assign) JJSportState  sportState;
 
 @end
 

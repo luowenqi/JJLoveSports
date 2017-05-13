@@ -31,10 +31,11 @@
 @property(nonatomic , strong) CLLocation * lastLocation;
 
 
+
+
 @end
 
 @implementation JJSportTrackingModel
-
 
 -(UIImage*)sportTpyeImage{
     UIImage* image = [[UIImage alloc]init];
@@ -57,22 +58,14 @@
 
 }
 
-
+#pragma mark - 可选初始化方法
 -(instancetype)initWithSportType:(JJSportType)sportType{
-
-
-    if (self = [super init]) {
-        self.sportType = sportType;
-        self.polyLineModelArray = [NSMutableArray array];
-    }
-
-    return self;
+    return [self initWithSportType:sportType sportState:JJSportStateContinue];
 }
 
 
 #pragma mark - 绘制线条
 -(MAPolyline*)drawPolylineWithLocation:(CLLocation*)location{
-    
     //速度优化算法,防止用户在静止的时候练习画线,消耗性能,并且出现大点
     if (location.speed <= 0) {
         return nil;
@@ -87,11 +80,15 @@
     if (self.startLocation == nil) {
         self.startLocation = location;
         self.lastLocation = location;
+        return nil;
     }
+    
+    
     JJSportPolylineModel* polyLineModel = [[JJSportPolylineModel alloc]initWithStartLocation:self.lastLocation endLocation:location];
     [self.polyLineModelArray addObject:polyLineModel];
     self.lastLocation = location;
     self.currentColor = polyLineModel.color;
+
     return polyLineModel.polyLine;
 }
 
@@ -103,7 +100,7 @@
 }
 
 -(CGFloat)totalDistance{
-    return [[self.polyLineModelArray valueForKeyPath:@"@sum.distance"] floatValue];
+    return ([[self.polyLineModelArray valueForKeyPath:@"@sum.distance"] floatValue] / 1000);
 }
 
 -(CGFloat)avgSpeed{
@@ -115,7 +112,7 @@
     int hour = (int)self.totalTime / 3600;
     int minute = (int)self.totalTime % 3600 /60;
     int second = (int)self.totalTime % 60 ;
-    return [NSString stringWithFormat:@"本次运动一共用时 %d小时 %d分钟 %d秒",hour,minute,second];
+    return [NSString stringWithFormat:@"%02d:%02d:%02d",hour,minute,second];
     return nil;
 }
 
@@ -123,6 +120,19 @@
     return [[self.polyLineModelArray valueForKeyPath:@"@max.speed"] floatValue];
 }
 
+-(instancetype)initWithSportType:(JJSportType)sportType sportState:(JJSportState)sportState{
+
+        self = [super init];
+        self.sportType = sportType;
+        self.sportState = sportState;
+        self.polyLineModelArray = [NSMutableArray array];
+    return self;
+}
+
+#pragma mark - 设置当前的运动状态
+-(void)setSportState:(JJSportState)sportState{
+    _sportState = sportState;
+}
 
 
 @end

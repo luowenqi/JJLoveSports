@@ -9,6 +9,10 @@
 #import "JJSportMapVC.h"
 #import <MAMapKit/MAMapKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
+#define Margin 15
+#define BASETAGE 66
+
+
 
 @interface JJSportMapVC ()<MAMapViewDelegate>
 
@@ -23,6 +27,36 @@
  地图
  */
 @property(nonatomic , strong) MAMapView *mapView;
+
+
+/**
+ 运动总时间
+ */
+@property(nonatomic , strong) UILabel * totalTimeLab;
+
+
+/**
+ 运动总距离
+ */
+@property(nonatomic , strong) UILabel * distaceLab;
+
+
+/**
+ 选择地图类型按钮
+ */
+@property(nonatomic , strong) UIButton * choiceMapTypeButton;
+
+
+/**
+ 运动数据View
+ */
+@property(nonatomic , strong) UIView * sportDataView;
+
+/**
+ 当前地图显示模式
+ */
+@property(nonatomic , assign) MAMapType currentMapType;
+
 @end
 
 @implementation JJSportMapVC
@@ -30,18 +64,145 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    [self addMapView];
+
+    [self addSportDataView];
+    
+    [self addFunctionButton];
+    
+    [self addGPSRSSIButton];
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+#pragma mark - 添加GPS信号强度View
+-(void)addGPSRSSIButton{
+    
+    UIButton* GPSRSSIButton = [[UIButton alloc]initWithTitle:@"建议绕开高楼大厦" titleColor:[UIColor whiteColor] image:@"ic_sport_gps_connect_1" HightImageName:@"ic_sport_gps_connect_1" addTarget:self action:@selector(closeMapClicked:) forControlEvents:UIControlEventTouchUpInside];
+    GPSRSSIButton.titleLabel.font = [UIFont systemFontOfSize:12];
+    
+    [self.view addSubview:GPSRSSIButton];
+    GPSRSSIButton.backgroundColor = [UIColor lightGrayColor];
+    GPSRSSIButton.alpha = 0.9;
+    [GPSRSSIButton sizeToFit];
+    [GPSRSSIButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view).offset(Margin);
+        make.top.equalTo(self.view).offset(1.5 * Margin);
+        make.size.mas_offset(CGSizeMake(GPSRSSIButton.bounds.size.width + 10, GPSRSSIButton.bounds.size.height + 10));
+    }];
+    //切圆角
+    GPSRSSIButton.layer.masksToBounds = YES;
+    GPSRSSIButton.layer.cornerRadius = (GPSRSSIButton.bounds.size.height + 10) / 2 ;
+    
+    
+}
+
+
+
+#pragma mark - 添加功能Button
+-(void)addFunctionButton{
+
+    //选择地图显示模型
+    UIButton* choiceMapTypeButton = [[UIButton alloc]initWithTitle:nil titleColor:nil image:@"ic_sport_gps_map_mode" HightImageName:@"ic_sport_gps_map_mode" addTarget:self action:@selector(choiceMapType:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:choiceMapTypeButton];
+    [choiceMapTypeButton sizeToFit];
+    [choiceMapTypeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view).offset(Margin);
+        make.bottom.equalTo(self.sportDataView.mas_top).offset(-Margin);
+    }];
+    
+    //关闭地图按钮
+    UIButton* closeMapButton = [[UIButton alloc]initWithTitle:nil titleColor:nil image:@"ic_sport_gps_map_close" HightImageName:@"ic_sport_gps_map_close" addTarget:self action:@selector(closeMapClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:closeMapButton];
+    [closeMapButton sizeToFit];
+    [closeMapButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.sportDataView.mas_top).offset(-Margin);
+        make.right.equalTo(self.view).offset(-Margin);
+    }];
+    
+    
+    //平面地图按钮
+    NSArray* mapTpyeButtonNormalImage = @[@"ic_sport_gps_map_flatmode",@"ic_sport_gps_map_mixmode",@"ic_sport_gps_map_realmode"];
+    NSArray* mapTpyeButtonSelectedImage = @[@"ic_sport_gps_map_realmode_selected",@"ic_sport_gps_map_mixmode_selected",@"ic_sport_gps_map_realmode_selected"];
+    
+    UIButton* button = [[UIButton alloc]init];
+    for (NSInteger i = 0; i< mapTpyeButtonNormalImage.count; i++) {
+        
+        button  = [[UIButton alloc]initWithTitle:nil titleColor:nil image:mapTpyeButtonNormalImage[i] HightImageName:nil addTarget:self action:@selector(changeMapViewType:) forControlEvents:UIControlEventTouchUpInside];
+        [button setImage:mapTpyeButtonSelectedImage[i] forState:UIControlStateSelected];
+       
+        [self.view addSubview:button];
+        [button sizeToFit];
+        [button mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.view).offset( (button.bounds.size.width + Margin)*i + Margin);
+            make.bottom.equalTo(choiceMapTypeButton.mas_top).offset(-Margin);
+        }];
+        button.tag = i + BASETAGE;
+    }
+
+    
+    
+    
+    /*
+     MAMapTypeStandard = 0,  // 普通地图
+     MAMapTypeSatellite,  // 卫星地图
+     MAMapTypeStandardNight // 夜间视图
+     */
+    
+    
+    
+
+}
+
+#pragma mark - 更改地图类型
+-(void)changeMapViewType:(UIButton*)sender{
+    
+    //点击同样的地图只做一次切换
+    if (sender.tag - BASETAGE == self.currentMapType) {
+        return;
+    }
+    
+    self.currentMapType = sender.tag - BASETAGE;
+    self.mapView.mapType = self.currentMapType;
+}
+
+
+#pragma mark - 关闭地图
+-(void)closeMapClicked:(UIButton*)sender{
+    [self.delegate closeMap];
+}
+
+
+#pragma mark - 选择地图显示类型
+-(void)choiceMapType:(UIButton*)sender{
+
+    [self popoverPresentationController];
+}
+
+
+#pragma mark - 添加地图
+-(void)addMapView{
+
     ///初始化地图
     _mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
     
     ///把地图添加至view
     [self.view addSubview:_mapView];
-    
-    //设置跟踪迷失
+    //设置跟踪模式
     _mapView.userTrackingMode =  MAUserTrackingModeFollowWithHeading;
     
     _mapView.showsCompass = YES;
     
-    _mapView.showsScale = YES;
+    _mapView.showsScale = NO;
     
     _mapView.showTraffic = YES;
     
@@ -58,7 +219,7 @@
 
 }
 
-
+#pragma mark - 地图更新位置
 -(void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation{
 
    // NSLog(@"%.f-----%.f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
@@ -69,6 +230,8 @@
         flage++;
         return;
     }
+    
+   
     
     //判断是不是正在更新位置
     if (updatingLocation) {
@@ -86,18 +249,17 @@
         }
     }
 
-    
-    //创建模型
-    //在地图上添加折线对象
+   //在地图上添加折线对象
     [_mapView addOverlay:[_trackingModel drawPolylineWithLocation:userLocation.location]];
     //设置用户位置为地图中心位置
     [_mapView setCenterCoordinate:_mapView.userLocation.coordinate animated:YES];
     
-    NSLog(@"%@",_trackingModel.totalTimeString);
-    NSLog(@"运动距离%f",_trackingModel.totalDistance);
-    NSLog(@"运动最大速度%f",_trackingModel.maxSpeed);
-    NSLog(@"运动平均速度-------------------%f",_trackingModel.avgSpeed);
+    _totalTimeLab.text = _trackingModel.totalTimeString;
+    _distaceLab.text = [NSString stringWithFormat:@"%.2f",_trackingModel.totalDistance];
+   
 }
+
+
 
 
 #pragma mark - 设置折线的样式
@@ -105,6 +267,14 @@
 {
     if ([overlay isKindOfClass:[MAPolyline class]])
     {
+        
+//        if (self.trackingModel.sportState != JJSportStateContinue) {
+//           
+//            NSLog(@"现在的运动状态%lu",self.trackingModel.sportState);
+//            
+//            return nil;
+//        }
+
         MAPolylineRenderer *polylineRenderer = [[MAPolylineRenderer alloc] initWithPolyline:overlay];
         
         polylineRenderer.lineWidth    = 8.f;
@@ -152,6 +322,55 @@
     return nil;
 }
 
+
+#pragma mark - 添加支持视图
+-(void)addSportDataView{
+    
+    UIBlurEffect *blureffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blureffect];
+    self.sportDataView = effectView;
+    effectView.frame = self.view.bounds;
+    [self.view addSubview:effectView];
+    [effectView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self.view);
+        make.height.mas_offset(88);
+    }];
+    
+    UILabel* distaceLab = [[UILabel alloc]initWithText:@"0.00" andFont:[UIFont boldSystemFontOfSize:24] textColor:[UIColor redColor]];
+    distaceLab.textAlignment = NSTextAlignmentCenter;
+    distaceLab.backgroundColor = [UIColor clearColor];
+    UILabel* distaceText = [[UILabel alloc]initWithText:@"距离(公里)" andFont:[UIFont systemFontOfSize:20] textColor:[UIColor blackColor]];
+    distaceText.textAlignment = NSTextAlignmentCenter;
+    distaceText.backgroundColor = [UIColor clearColor];
+    
+    UILabel* totalTimeLab = [[UILabel alloc]initWithText:@"00:00:00" andFont:[UIFont boldSystemFontOfSize:24] textColor:[UIColor blackColor]];
+    totalTimeLab.textAlignment = NSTextAlignmentCenter;
+    totalTimeLab.backgroundColor = [UIColor clearColor];
+    UILabel* timeText = [[UILabel alloc]initWithText:@"时长" andFont:[UIFont systemFontOfSize:20] textColor:[UIColor blackColor]];
+    timeText.textAlignment = NSTextAlignmentCenter;
+    timeText.backgroundColor = [UIColor clearColor];
+    
+    _distaceLab = distaceLab;
+    _totalTimeLab = totalTimeLab;
+    
+    
+    [effectView addSubview:distaceLab];
+    [effectView addSubview:distaceText];
+    [effectView addSubview:totalTimeLab];
+    [effectView addSubview:timeText];
+    
+    [@[distaceLab,totalTimeLab] mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:0 leadSpacing:0 tailSpacing:0];
+    [@[distaceLab,totalTimeLab] mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(effectView).offset(20);
+    }];
+    
+    
+    [@[distaceText,timeText] mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:0 leadSpacing:0 tailSpacing:0];
+    [@[distaceText,timeText]  mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(effectView).offset(-20);
+    }];
+    
+}
 
 
 

@@ -7,8 +7,18 @@
 //
 
 #import "JJSportSupportVC.h"
+#import "JJSportMaskView.h"
 
-@interface JJSportSupportVC ()
+
+
+@interface JJSportSupportVC ()<JJSportMaskViewDelegate,JJSportMapVCDeleagte>
+
+
+@property(nonatomic , strong) JJSportMapVC * mapVC;
+
+
+#pragma mark - 遮罩视图
+@property(nonatomic , strong) JJSportMaskView * maskView;
 
 @end
 
@@ -21,30 +31,35 @@
 
 #pragma mark - 设置界面
 -(void)setupUI{
-
     //添加地图视图
     [self addMapView];
+    [self addMaskView];
+   
     
-    //添加支持视图
-    [self addSupportView];
-
-}
-
-#pragma mark - 添加支持视图
--(void)addSupportView{
-
-    UIBlurEffect *blureffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blureffect];
-   
-    [self.view addSubview:effectView];
-    [effectView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(self.view);
-        make.height.mas_offset(88);
-    }];
-   
 }
 
 
+
+
+
+
+
+
+#pragma mark - 添加遮罩视图
+-(void)addMaskView{
+
+    JJSportMaskView* maskView = [[JJSportMaskView alloc]initWithFrame:self.view.bounds];
+    [self.view addSubview:maskView];
+    _maskView = maskView;
+    _maskView.delegate = self;
+}
+
+
+
+#pragma mark - 代理方法  展开地图
+-(void)showMap{
+    self.maskView.hidden = YES;
+}
 
 #pragma mark - 添加地图
 -(void)addMapView{
@@ -54,9 +69,25 @@
     [self.view addSubview:mapVC.view];
     [mapVC didMoveToParentViewController:self];
     //设置mapVC.view的大小
-    mapVC.view.frame = CGRectMake(0, 0, ScreenWidth, ScreenHight - 64);
-
+    mapVC.view.frame = self.view.bounds;
     mapVC.trackingModel = [[JJSportTrackingModel alloc]initWithSportType:self.sportType];
+    mapVC.delegate = self;
+    _mapVC = mapVC;
 }
+
+#pragma mark - 关闭地图
+-(void)closeMap{
+    self.maskView.hidden = NO;
+}
+
+#pragma mark - 代理方法,改变运动状态
+-(void)changeSportState:(UIButton *)sender{
+    self.mapVC.trackingModel.sportState = sender.tag;
+}
+
+
+
+
+
 
 @end

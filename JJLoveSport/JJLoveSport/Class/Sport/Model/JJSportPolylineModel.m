@@ -25,7 +25,7 @@
     
     if   (self = [super init]) {
           self.startLocation = startLocation;
-            self.endLocation = endLocation;
+          self.endLocation = endLocation;
     }
     
     return self;
