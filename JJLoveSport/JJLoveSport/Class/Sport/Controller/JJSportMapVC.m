@@ -9,13 +9,27 @@
 #import "JJSportMapVC.h"
 #import <MAMapKit/MAMapKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
+#import "JJCircleTransition.h"
+#import "JJMapTypeChooseVC.h"
+
 #define Margin 15
 #define BASETAGE 66
 
 
 
-@interface JJSportMapVC ()<MAMapViewDelegate>
+@interface JJSportMapVC ()<MAMapViewDelegate,UIPopoverPresentationControllerDelegate,JJMapTypeChooseVCDelegate>
 
+
+
+/**
+ 选择地图类型
+ */
+@property(nonatomic , strong) UIButton * choiceMapTypeButton;
+
+/**
+ 圆形转场
+ */
+@property(nonatomic , strong) JJCircleTransition *  circleTransition;
 
 /**
  起点位置
@@ -41,10 +55,7 @@
 @property(nonatomic , strong) UILabel * distaceLab;
 
 
-/**
- 选择地图类型按钮
- */
-@property(nonatomic , strong) UIButton * choiceMapTypeButton;
+
 
 
 /**
@@ -57,9 +68,28 @@
  */
 @property(nonatomic , assign) MAMapType currentMapType;
 
+@property(nonatomic , strong) UIButton * gpsStateButton;
+
 @end
 
 @implementation JJSportMapVC
+
+
+-(instancetype)init{
+
+    if (self = [super init]) {
+        //设置转场的样式为自定义
+        self.modalPresentationStyle = UIModalPresentationCustom;
+        ///维护一个圆形转场的属性,并且进行初始化(参数1:圆心位置 参数2:初始圆半径);
+        //这里的36是高德地图中compassSize半径,是一个只读属性
+        _circleTransition = [[JJCircleTransition alloc]initWithArcCenter:CGPointMake([UIScreen mainScreen].bounds.size.width - Margin - 15, 1.5*Margin + 15 ) cornerRadius:15];
+        self.transitioningDelegate = _circleTransition;
+    }
+    return self;
+
+}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -73,10 +103,28 @@
     
     [self addGPSRSSIButton];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(chageGPSImage:) name:@"GPSSignalChangeNotification" object:nil];
     
     
 }
 
+
+-(void)chageGPSImage:(NSNotification*)notification{
+
+    JJSportGPSSingalState state = [notification.userInfo[@"key"] integerValue];
+    NSString* imageName = [NSString stringWithFormat:@"ic_sport_gps_map_connect_%zd",state];
+    NSString* str;
+    if (state == JJSportGPSSingalStateClose) {
+        str = @"  GPS信号已断开  ";
+    }else if (state == JJSportGPSSingalStateBad){
+    str = @"  请绕开高楼大厦  ";
+    }else{
+        str = nil;
+    }
+    
+    [self.gpsStateButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [self.gpsStateButton setTitle:str forState:UIControlStateNormal];
+}
 
 
 
@@ -86,8 +134,8 @@
 
 #pragma mark - 添加GPS信号强度View
 -(void)addGPSRSSIButton{
-    
-    UIButton* GPSRSSIButton = [[UIButton alloc]initWithTitle:@"建议绕开高楼大厦" titleColor:[UIColor whiteColor] image:@"ic_sport_gps_connect_1" HightImageName:@"ic_sport_gps_connect_1" addTarget:self action:@selector(closeMapClicked:) forControlEvents:UIControlEventTouchUpInside];
+
+    UIButton* GPSRSSIButton = [[UIButton alloc]initWithTitle:@"  建议绕开高楼大厦  " titleColor:[UIColor whiteColor] image:@"ic_sport_gps_connect_1" HightImageName:@"ic_sport_gps_connect_1" addTarget:self action:@selector(closeMapClicked:) forControlEvents:UIControlEventTouchUpInside];
     GPSRSSIButton.titleLabel.font = [UIFont systemFontOfSize:12];
     
     [self.view addSubview:GPSRSSIButton];
@@ -97,11 +145,12 @@
     [GPSRSSIButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(Margin);
         make.top.equalTo(self.view).offset(1.5 * Margin);
-        make.size.mas_offset(CGSizeMake(GPSRSSIButton.bounds.size.width + 10, GPSRSSIButton.bounds.size.height + 10));
     }];
     //切圆角
+    [GPSRSSIButton setContentEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
     GPSRSSIButton.layer.masksToBounds = YES;
     GPSRSSIButton.layer.cornerRadius = (GPSRSSIButton.bounds.size.height + 10) / 2 ;
+    self.gpsStateButton = GPSRSSIButton;
     
     
 }
@@ -119,7 +168,7 @@
         make.left.equalTo(self.view).offset(Margin);
         make.bottom.equalTo(self.sportDataView.mas_top).offset(-Margin);
     }];
-    
+    self.choiceMapTypeButton = choiceMapTypeButton;
     //关闭地图按钮
     UIButton* closeMapButton = [[UIButton alloc]initWithTitle:nil titleColor:nil image:@"ic_sport_gps_map_close" HightImageName:@"ic_sport_gps_map_close" addTarget:self action:@selector(closeMapClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:closeMapButton];
@@ -127,67 +176,50 @@
     [closeMapButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.sportDataView.mas_top).offset(-Margin);
         make.right.equalTo(self.view).offset(-Margin);
-    }];
-    
-    
-    //平面地图按钮
-    NSArray* mapTpyeButtonNormalImage = @[@"ic_sport_gps_map_flatmode",@"ic_sport_gps_map_mixmode",@"ic_sport_gps_map_realmode"];
-    NSArray* mapTpyeButtonSelectedImage = @[@"ic_sport_gps_map_realmode_selected",@"ic_sport_gps_map_mixmode_selected",@"ic_sport_gps_map_realmode_selected"];
-    
-    UIButton* button = [[UIButton alloc]init];
-    for (NSInteger i = 0; i< mapTpyeButtonNormalImage.count; i++) {
-        
-        button  = [[UIButton alloc]initWithTitle:nil titleColor:nil image:mapTpyeButtonNormalImage[i] HightImageName:nil addTarget:self action:@selector(changeMapViewType:) forControlEvents:UIControlEventTouchUpInside];
-        [button setImage:mapTpyeButtonSelectedImage[i] forState:UIControlStateSelected];
-       
-        [self.view addSubview:button];
-        [button sizeToFit];
-        [button mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.view).offset( (button.bounds.size.width + Margin)*i + Margin);
-            make.bottom.equalTo(choiceMapTypeButton.mas_top).offset(-Margin);
-        }];
-        button.tag = i + BASETAGE;
-    }
-
-    
-    
-    
-    /*
-     MAMapTypeStandard = 0,  // 普通地图
-     MAMapTypeSatellite,  // 卫星地图
-     MAMapTypeStandardNight // 夜间视图
-     */
-    
-    
-    
+    }];   
 
 }
 
-#pragma mark - 更改地图类型
--(void)changeMapViewType:(UIButton*)sender{
-    
-    //点击同样的地图只做一次切换
-    if (sender.tag - BASETAGE == self.currentMapType) {
-        return;
-    }
-    
-    self.currentMapType = sender.tag - BASETAGE;
-    self.mapView.mapType = self.currentMapType;
-}
+
 
 
 #pragma mark - 关闭地图
 -(void)closeMapClicked:(UIButton*)sender{
-    [self.delegate closeMap];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 #pragma mark - 选择地图显示类型
 -(void)choiceMapType:(UIButton*)sender{
 
-    [self popoverPresentationController];
+    JJMapTypeChooseVC* mapTypeChooseVC = [[JJMapTypeChooseVC alloc]init];
+
+    mapTypeChooseVC.deleagte = self;  //这个是其他的代理,和popover没有关系
+    //设置模态的样式
+    mapTypeChooseVC.modalPresentationStyle = UIModalPresentationPopover;
+    //创建popover控制器
+    UIPopoverPresentationController* popover = mapTypeChooseVC.popoverPresentationController;
+    //设置popover的来源视图,从谁那里弹出来
+    popover.sourceView = self.choiceMapTypeButton;
+    //设置尖尖的起始位置
+     //popover有一个来源视图soucreView：popover从哪一个地方弹出
+    //默认情况下箭头的中心点在来源视图的原点位置（左上角），如果想让popover的箭头显示在来源视图的中线点，则只需要设置popover的目标参考矩形souceRect为来源视图的bounds属性即可
+    popover.sourceRect = popover.sourceView.bounds;
+    //设置尖尖的朝向
+    popover.permittedArrowDirections = UIPopoverArrowDirectionDown;
+    //设置popover的大小,如果设置为0那么就是自适应大小,注意这里不是popover进行设置
+    mapTypeChooseVC.preferredContentSize = CGSizeMake(0, 110);
+    //设置代理
+    mapTypeChooseVC.popoverPresentationController.delegate = self;
+    //弹出控制器
+    [self presentViewController:mapTypeChooseVC animated:YES completion:nil];
+//    NSLog(@"选择地图类型");
 }
 
+//代理方法,设置不是全屏弹出
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller traitCollection:(UITraitCollection *)traitCollection{
+    return UIModalPresentationNone;
+}
 
 #pragma mark - 添加地图
 -(void)addMapView{
@@ -200,14 +232,20 @@
     //设置跟踪模式
     _mapView.userTrackingMode =  MAUserTrackingModeFollowWithHeading;
     
-    _mapView.showsCompass = YES;
-    
     _mapView.showsScale = NO;
     
     _mapView.showTraffic = YES;
     
     _mapView.delegate = self;
     
+//    NSLog(@"%f--%f",_mapView.compassOrigin.x ,_mapView.compassOrigin.y);
+
+    
+    //设置指南针的位置
+//    _mapView.compassOrigin = CGPointMake(<#CGFloat x#>, <#CGFloat y#>)
+    
+   _mapView.compassOrigin=  CGPointMake([UIScreen mainScreen].bounds.size.width - Margin - 15 - _mapView.compassSize.width / 2, 1.5*Margin + 15 - _mapView.compassSize.width / 2 );
+//    NSLog(@"%f--%f",_mapView.compassOrigin.x ,_mapView.compassOrigin.y);
     //关闭后台自动暂停开关
     _mapView.pausesLocationUpdatesAutomatically = NO;
     
@@ -371,6 +409,18 @@
     }];
     
 }
+//    /*
+//     MAMapTypeStandard = 0,  // 普通地图
+//     MAMapTypeSatellite,  // 卫星地图
+//     MAMapTypeStandardNight // 夜间视图
+//     */
+
+
+-(void)changeMapeType:(UIButton *)sender{
+
+    _mapView.mapType = sender.tag;
+}
+
 
 
 

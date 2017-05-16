@@ -11,7 +11,7 @@
 
 
 
-@interface JJSportSupportVC ()<JJSportMaskViewDelegate,JJSportMapVCDeleagte>
+@interface JJSportSupportVC ()<JJSportMaskViewDelegate>
 
 
 @property(nonatomic , strong) JJSportMapVC * mapVC;
@@ -34,10 +34,29 @@
     //添加地图视图
     [self addMapView];
     [self addMaskView];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(chageGPSImage:) name:@"GPSSignalChangeNotification" object:nil];
    
     
 }
 
+
+#pragma mark -
+-(void)chageGPSImage:(NSNotification*)notification{
+    JJSportGPSSingalState state = [notification.userInfo[@"key"] integerValue];
+    NSString* imageName = [NSString stringWithFormat:@"ic_sport_gps_map_connect_%zd",state];
+    NSString* str;
+    if (state == JJSportGPSSingalStateClose) {
+        str = @"GPS信号已断开";
+    }else if (state == JJSportGPSSingalStateBad){
+        str = @"请绕开高楼大厦";
+    }else{
+        str = nil;
+    }
+    
+    [self.maskView.gpsStateButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [self.maskView.gpsStateButton setTitle:str forState:UIControlStateNormal];
+//    [self.maskView.gpsStateButton sizeToFit];
+}
 
 
 
@@ -47,7 +66,6 @@
 
 #pragma mark - 添加遮罩视图
 -(void)addMaskView{
-
     JJSportMaskView* maskView = [[JJSportMaskView alloc]initWithFrame:self.view.bounds];
     [self.view addSubview:maskView];
     _maskView = maskView;
@@ -56,32 +74,26 @@
 
 
 
-#pragma mark - 代理方法  展开地图
+#pragma mark - 展开地图
 -(void)showMap{
-    self.maskView.hidden = YES;
+    [self presentViewController:_mapVC animated:YES completion:nil];
 }
 
 #pragma mark - 添加地图
 -(void)addMapView{
-    //使用父子控制器的方式把另外一个控制器加进来
     JJSportMapVC* mapVC = [[JJSportMapVC alloc]init];
-    [self addChildViewController:mapVC];
-    [self.view addSubview:mapVC.view];
-    [mapVC didMoveToParentViewController:self];
-    //设置mapVC.view的大小
-    mapVC.view.frame = self.view.bounds;
     mapVC.trackingModel = [[JJSportTrackingModel alloc]initWithSportType:self.sportType];
-    mapVC.delegate = self;
     _mapVC = mapVC;
 }
 
-#pragma mark - 关闭地图
--(void)closeMap{
-    self.maskView.hidden = NO;
-}
+
 
 #pragma mark - 代理方法,改变运动状态
 -(void)changeSportState:(UIButton *)sender{
+    
+    if (sender.tag == JJSportStateFinish) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
     self.mapVC.trackingModel.sportState = sender.tag;
 }
 

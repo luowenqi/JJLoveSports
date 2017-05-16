@@ -66,6 +66,13 @@
 
 #pragma mark - 绘制线条
 -(MAPolyline*)drawPolylineWithLocation:(CLLocation*)location{
+    
+    
+    //GPS信号强度算法
+    if ([self gpsStatewithLocation:location] == JJSportGPSSingalStateBad || [self gpsStatewithLocation:location] == JJSportGPSSingalStateClose) {
+        return nil;
+    }
+    
     //速度优化算法,防止用户在静止的时候练习画线,消耗性能,并且出现大点
     if (location.speed <= 0) {
         return nil;
@@ -76,6 +83,9 @@
     if ([[NSDate date] timeIntervalSinceDate:location.timestamp] >= 2) {
         return nil;
     }
+    
+
+    
     
     if (self.startLocation == nil) {
         self.startLocation = location;
@@ -132,6 +142,41 @@
 #pragma mark - 设置当前的运动状态
 -(void)setSportState:(JJSportState)sportState{
     _sportState = sportState;
+}
+
+
+
+- (JJSportGPSSingalState )gpsStatewithLocation:(CLLocation *)location
+{
+    JJSportGPSSingalState state;
+    
+    //1.通过location的水平精度来判断gps信号
+    if (location.horizontalAccuracy < 0) {
+        state = JJSportGPSSingalStateClose;
+    } else if (location.horizontalAccuracy > 163) {
+        state = JJSportGPSSingalStateBad;
+    } else if (location.horizontalAccuracy > 48) {
+        state = JJSportGPSSingalStateNormal;
+    } else {
+        state = JJSportGPSSingalStateGood;
+    }
+    
+    //GPS信号变更
+    //实际公司开发中，当GPS信号很差的情况下，一般根据公司实力会有以下三种处理情况
+    //第一种：不做任何处理（与其给用户一个错误的轨迹，倒不如给用户一个非常友善的提示，GPS信号差绘制轨迹缺失）
+    //第二种方式：由算法工程师对GPS信号差的轨迹做一个算法优化，根据算法推算出正确的轨迹：对算法工程师的要求非常高
+    //第三种方式：由硬件的传感器来推算真实的路线
+    if(state != _gpsSingalState)
+    {
+        //保存当前gps信号
+        _gpsSingalState = state;
+        
+        //使用通知发送当前GPS信号
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"GPSSignalChangeNotification" object:nil userInfo:@{@"key":@(state)}];
+        
+    }
+    
+    return state;
 }
 
 

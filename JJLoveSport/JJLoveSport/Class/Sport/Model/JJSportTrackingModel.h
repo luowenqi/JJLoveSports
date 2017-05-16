@@ -27,6 +27,14 @@ typedef enum : NSUInteger {
     JJSportStateFinish,
 } JJSportState;
 
+typedef enum : NSUInteger {
+    JJSportGPSSingalStateClose,
+    JJSportGPSSingalStateBad,
+    JJSportGPSSingalStateNormal,
+    JJSportGPSSingalStateGood,
+} JJSportGPSSingalState;
+
+
 
 /**
  指定初始化方法
@@ -39,6 +47,8 @@ typedef enum : NSUInteger {
  */
 -(instancetype)initWithSportType:(JJSportType)sportType;
 
+
+@property(nonatomic , assign) JJSportGPSSingalState  gpsSingalState;
 
 /**
  当前颜色

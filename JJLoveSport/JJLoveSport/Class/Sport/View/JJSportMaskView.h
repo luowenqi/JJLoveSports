@@ -23,6 +23,8 @@
 -(void)changeSportState:(UIButton*)sender;
 
 
+
+
 @end
 
 
@@ -30,5 +32,8 @@
 
 
 @property(nonatomic , weak) id<JJSportMaskViewDelegate>  delegate;
+
+
+@property(nonatomic , strong) UIButton * gpsStateButton;
 
 @end

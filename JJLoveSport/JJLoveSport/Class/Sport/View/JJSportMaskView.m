@@ -56,6 +56,7 @@
     self.backgroundColor = [UIColor colorWithHex:0x406479];
     
     [self addGPSRSSIButton];
+    
     [self addDistanceLable];
     
     [self addSportDataView];
@@ -104,10 +105,14 @@
     
     UIButton * showMapButton = [[UIButton alloc]initWithTitle:nil titleColor:nil image:@"ic_sport_map" HightImageName:@"ic_sport_map" addTarget:self action:@selector(showMapButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:showMapButton];
+    [showMapButton sizeToFit];
+//    showMapButton.backgroundColor = [UIColor whiteColor];
     [showMapButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).offset(1.5 * Margin);
+        make.top.equalTo(self).offset(1.5*Margin);
         make.right.equalTo(self).offset(-Margin);
+//        make.size.mas_offset(CGSizeMake( 30 * KScreenScale, 30 * KScreenScale));
     }];
+    //NSLog(@"111111111%f",showMapButton.bounds.size.width);
 }
 
 #pragma mark - 展开地图
@@ -156,20 +161,18 @@
 #pragma mark - 添加支持视图
 -(void)addSportDataView{
     
-    CGFloat boldFontSize = 15 * KScreenScale;
-    CGFloat SystemFontSize = 10 * KScreenScale;
-    
-    UILabel* totalTimeLab = [[UILabel alloc]initWithText:@"00:00:00" andFont:[UIFont boldSystemFontOfSize:boldFontSize] textColor:[UIColor blackColor]];
+
+    UILabel* totalTimeLab = [[UILabel alloc]initWithText:@"00:00:00" andFont:[UIFont fontWithName:@"DINCond-Bold" size:15] textColor:[UIColor blackColor]];
     totalTimeLab.textAlignment = NSTextAlignmentCenter;
     totalTimeLab.backgroundColor = [UIColor clearColor];
-    UILabel* timeText = [[UILabel alloc]initWithText:@"时长" andFont:[UIFont systemFontOfSize:SystemFontSize ] textColor:[UIColor blackColor]];
+    UILabel* timeText = [[UILabel alloc]initWithText:@"时长" andFont:[UIFont fontWithName:@"DINCond-Bold" size:15]  textColor:[UIColor blackColor]];
     timeText.textAlignment = NSTextAlignmentCenter;
     timeText.backgroundColor = [UIColor clearColor];
     
-    UILabel* avgSpeedLable = [[UILabel alloc]initWithText:@"0" andFont:[UIFont boldSystemFontOfSize:boldFontSize] textColor:[UIColor colorWithHex:0xffffff]];
+    UILabel* avgSpeedLable = [[UILabel alloc]initWithText:@"0" andFont:[UIFont fontWithName:@"DINCond-Bold" size:15]  textColor:[UIColor colorWithHex:0xffffff]];
     avgSpeedLable.textAlignment = NSTextAlignmentCenter;
     avgSpeedLable.backgroundColor = [UIColor clearColor];
-    UILabel* speedText = [[UILabel alloc]initWithText:@"平均速度(公里/时)" andFont:[UIFont systemFontOfSize:SystemFontSize] textColor:[UIColor colorWithHex:0xffffff]];
+    UILabel* speedText = [[UILabel alloc]initWithText:@"平均速度(公里/时)" andFont:[UIFont fontWithName:@"DINCond-Bold" size:15]  textColor:[UIColor colorWithHex:0xffffff]];
     speedText.textAlignment = NSTextAlignmentCenter;
     speedText.backgroundColor = [UIColor clearColor];
     
@@ -202,16 +205,17 @@
 #pragma mark - 添加距离lable
 -(void)addDistanceLable{
     
-    UILabel*  distanceLable = [[UILabel alloc]initWithText:@"0.00" andFont:[UIFont boldSystemFontOfSize: 180 / [UIScreen mainScreen].scale] textColor:[UIColor whiteColor]];
+    UILabel*  distanceLable = [[UILabel alloc]initWithText:@"0.00" andFont:[UIFont fontWithName:@"DINCond-Bold" size:90] textColor:[UIColor whiteColor]];
     distanceLable.backgroundColor = [UIColor clearColor];
     [self addSubview:distanceLable];
+    distanceLable.font = [UIFont fontWithName:@"DINCond-Bold" size:90] ;
     [distanceLable mas_makeConstraints:^(MASConstraintMaker *make) {
         [make centerX];
         make.bottom.equalTo(self.mas_top).offset( 409 / [UIScreen mainScreen].scale);
     }];
     
     
-    UILabel*  distanceStringLable = [[UILabel alloc]initWithText:@"距离(公里)" andFont:[UIFont systemFontOfSize:18] textColor:[UIColor colorWithHex:0x8b9eaa]];
+    UILabel*  distanceStringLable = [[UILabel alloc]initWithText:@"距离(公里)" andFont:[UIFont fontWithName:@"DINCond-Bold" size:18] textColor:[UIColor colorWithHex:0x8b9eaa]];
     distanceStringLable.backgroundColor = [UIColor clearColor];
     [self addSubview:distanceStringLable];
     [distanceStringLable mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -224,22 +228,23 @@
 
 #pragma mark - 添加GPS信号强度View
 -(void)addGPSRSSIButton{
-    
-    UIButton* GPSRSSIButton = [[UIButton alloc]initWithTitle:@"建议绕开高楼大厦" titleColor:[UIColor whiteColor] image:@"ic_sport_gps_connect_1" HightImageName:@"ic_sport_gps_connect_1" addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+    UIButton* GPSRSSIButton = [[UIButton alloc]initWithTitle:@"  建议绕开高楼大厦  " titleColor:[UIColor whiteColor] image:@"ic_sport_gps_connect_1" HightImageName:@"ic_sport_gps_connect_1" addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
     GPSRSSIButton.titleLabel.font = [UIFont systemFontOfSize:12];
     
     [self addSubview:GPSRSSIButton];
     GPSRSSIButton.backgroundColor = [UIColor darkTextColor];
     GPSRSSIButton.alpha = 0.9;
     [GPSRSSIButton sizeToFit];
+    
     [GPSRSSIButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(Margin);
         make.top.equalTo(self).offset(1.5 * Margin);
-        make.size.mas_offset(CGSizeMake(GPSRSSIButton.bounds.size.width + 10, GPSRSSIButton.bounds.size.height + 10));
     }];
+    [GPSRSSIButton setContentEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
     //切圆角
     GPSRSSIButton.layer.masksToBounds = YES;
     GPSRSSIButton.layer.cornerRadius = (GPSRSSIButton.bounds.size.height + 10) / 2 ;
+    self.gpsStateButton = GPSRSSIButton;
 }
 
 

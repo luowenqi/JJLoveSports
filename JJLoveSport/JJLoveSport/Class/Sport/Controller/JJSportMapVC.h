@@ -10,17 +10,13 @@
 #import "JJSportTrackingModel.h"
 
 
-@protocol JJSportMapVCDeleagte <NSObject>
 
--(void)closeMap;
-
-@end
 
 
 @interface JJSportMapVC : UIViewController
 
 
-@property(nonatomic , weak) id<JJSportMapVCDeleagte> delegate;
+
 
 
 /**
