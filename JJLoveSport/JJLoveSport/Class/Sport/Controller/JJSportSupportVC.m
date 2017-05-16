@@ -11,7 +11,7 @@
 
 
 
-@interface JJSportSupportVC ()<JJSportMaskViewDelegate>
+@interface JJSportSupportVC ()<JJSportMaskViewDelegate,JJSportMapVCDelegate>
 
 
 @property(nonatomic , strong) JJSportMapVC * mapVC;
@@ -24,6 +24,16 @@
 
 @implementation JJSportSupportVC
 
+
+-(instancetype)init{
+    if (self = [super init]) {
+        
+    }
+    return self;
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
@@ -34,13 +44,11 @@
     //添加地图视图
     [self addMapView];
     [self addMaskView];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(chageGPSImage:) name:@"GPSSignalChangeNotification" object:nil];
-   
-    
+       [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(chageGPSImage:) name:@"GPSSignalChangeNotification" object:nil];
 }
 
 
-#pragma mark -
+#pragma mark - 更改gps按你的样式
 -(void)chageGPSImage:(NSNotification*)notification{
     JJSportGPSSingalState state = [notification.userInfo[@"key"] integerValue];
     NSString* imageName = [NSString stringWithFormat:@"ic_sport_gps_map_connect_%zd",state];
@@ -82,6 +90,7 @@
 #pragma mark - 添加地图
 -(void)addMapView{
     JJSportMapVC* mapVC = [[JJSportMapVC alloc]init];
+    mapVC.delegate = self;
     mapVC.trackingModel = [[JJSportTrackingModel alloc]initWithSportType:self.sportType];
     _mapVC = mapVC;
 }
@@ -97,7 +106,14 @@
     self.mapVC.trackingModel.sportState = sender.tag;
 }
 
+#pragma mark - JJSportMapVCDelegate,更新运动数据
+-(void)updateSportDate:(JJSportTrackingModel *)sportTrackingModel mapVC:(JJSportMapVC *)mapVC{
 
+    self.maskView.totalTimeLab.text = sportTrackingModel.totalTimeString;
+    self.maskView.totalDistaceLab.text = [NSString stringWithFormat:@"%.2f",sportTrackingModel.totalDistance];
+    self.maskView.avgSpeedLab.text = [NSString stringWithFormat:@"%.2f",sportTrackingModel.avgSpeed];
+
+}
 
 
 

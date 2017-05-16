@@ -29,6 +29,7 @@
 		A4DF52B31EC5D8850024B22E /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DF52B21EC5D8850024B22E /* UIColor+Addition.m */; };
 		A4DF52B61EC5EC880024B22E /* JJSportMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DF52B51EC5EC880024B22E /* JJSportMaskView.m */; };
 		A4EE6DDC1ECB13C10043DDAC /* JJMapTypeChooseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A4EE6DDB1ECB13C10043DDAC /* JJMapTypeChooseVC.m */; };
+		A4EE6DDE1ECB3DA50043DDAC /* DINCond-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A4EE6DDD1ECB3D060043DDAC /* DINCond-Bold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,7 +67,6 @@
 		A41935C91EC33117003FA0FD /* JJAddtionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJAddtionHeader.h; sourceTree = "<group>"; };
 		A421683C1ECA026D00DC0486 /* JJCircleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCircleTransition.h; sourceTree = "<group>"; };
 		A421683D1ECA026D00DC0486 /* JJCircleTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJCircleTransition.m; sourceTree = "<group>"; };
-		A421683F1ECB0AD800DC0486 /* DINCond-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DINCond-Bold.otf"; path = "JJAddtions/DINCond-Bold.otf"; sourceTree = "<group>"; };
 		A4DF52A71EC4B5A30024B22E /* JJSportPolylineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSportPolylineModel.h; sourceTree = "<group>"; };
 		A4DF52A81EC4B5A30024B22E /* JJSportPolylineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSportPolylineModel.m; sourceTree = "<group>"; };
 		A4DF52AA1EC560200024B22E /* GlobalImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalImage.h; sourceTree = "<group>"; };
@@ -78,6 +78,7 @@
 		A4DF52B51EC5EC880024B22E /* JJSportMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSportMaskView.m; sourceTree = "<group>"; };
 		A4EE6DDA1ECB13C10043DDAC /* JJMapTypeChooseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJMapTypeChooseVC.h; sourceTree = "<group>"; };
 		A4EE6DDB1ECB13C10043DDAC /* JJMapTypeChooseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJMapTypeChooseVC.m; sourceTree = "<group>"; };
+		A4EE6DDD1ECB3D060043DDAC /* DINCond-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINCond-Bold.otf"; sourceTree = "<group>"; };
 		E4E06A0B614745D52C1F0E2C /* Pods-JJLoveSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJLoveSport.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJLoveSport/Pods-JJLoveSport.debug.xcconfig"; sourceTree = "<group>"; };
 		FDD2E7C332FD65F3C41B0900 /* libPods-JJLoveSport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JJLoveSport.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -123,6 +124,7 @@
 		A41935591EC30B52003FA0FD /* JJLoveSport */ = {
 			isa = PBXGroup;
 			children = (
+				A4EE6DDD1ECB3D060043DDAC /* DINCond-Bold.otf */,
 				A419358D1EC3141E003FA0FD /* Class */,
 				A41935B81EC314F7003FA0FD /* Default */,
 				A419355A1EC30B52003FA0FD /* Supporting Files */,
@@ -230,7 +232,6 @@
 		A419359D1EC3141E003FA0FD /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				A421683F1ECB0AD800DC0486 /* DINCond-Bold.otf */,
 				A421683B1ECA026D00DC0486 /* Tool */,
 				A41935C51EC32F18003FA0FD /* JJAddtions */,
 				A419359E1EC3141E003FA0FD /* Controllers.json */,
@@ -463,6 +464,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4EE6DDE1ECB3DA50043DDAC /* DINCond-Bold.otf in Resources */,
 				A419356A1EC30B53003FA0FD /* LaunchScreen.storyboard in Resources */,
 				A41935B41EC3141E003FA0FD /* Controllers.json in Resources */,
 				A41935671EC30B53003FA0FD /* Assets.xcassets in Resources */,

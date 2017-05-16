@@ -84,6 +84,7 @@
         //这里的36是高德地图中compassSize半径,是一个只读属性
         _circleTransition = [[JJCircleTransition alloc]initWithArcCenter:CGPointMake([UIScreen mainScreen].bounds.size.width - Margin - 15, 1.5*Margin + 15 ) cornerRadius:15];
         self.transitioningDelegate = _circleTransition;
+        [self addMapView];
     }
     return self;
 
@@ -95,7 +96,7 @@
     [super viewDidLoad];
     
     
-    [self addMapView];
+    
 
     [self addSportDataView];
     
@@ -294,7 +295,13 @@
     
     _totalTimeLab.text = _trackingModel.totalTimeString;
     _distaceLab.text = [NSString stringWithFormat:@"%.2f",_trackingModel.totalDistance];
-   
+    
+    
+
+    if (self.delegate && [self.delegate respondsToSelector:@selector(updateSportDate:mapVC:)]) {
+        [self.delegate updateSportDate:self.trackingModel mapVC:self];
+        
+    }
 }
 
 

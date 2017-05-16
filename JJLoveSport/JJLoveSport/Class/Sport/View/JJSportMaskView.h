@@ -25,6 +25,8 @@
 
 
 
+
+
 @end
 
 
@@ -35,5 +37,34 @@
 
 
 @property(nonatomic , strong) UIButton * gpsStateButton;
+
+
+/**
+ 运动数据View
+ */
+@property(nonatomic , strong) UIView * sportDataView;
+
+/**
+ 运动总时间
+ */
+@property(nonatomic , strong) UILabel * totalTimeLab;
+
+
+/**
+ 运动平均速度
+ */
+@property(nonatomic , strong) UILabel * avgSpeedLab;
+
+
+/**
+ 暂停按钮
+ */
+@property(nonatomic , strong) UIButton * pauseButton;
+
+
+/**
+ 平局速度
+ */
+@property(nonatomic , strong) UILabel * totalDistaceLab;
 
 @end

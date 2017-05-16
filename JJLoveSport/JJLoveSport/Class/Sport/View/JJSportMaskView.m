@@ -13,27 +13,7 @@
 
 @interface JJSportMaskView ()
 
-/**
- 运动数据View
- */
-@property(nonatomic , strong) UIView * sportDataView;
 
-/**
- 运动总时间
- */
-@property(nonatomic , strong) UILabel * totalTimeLab;
-
-
-/**
- 运动总距离
- */
-@property(nonatomic , strong) UILabel * avgSpeedLab;
-
-
-/**
- 暂停按钮
- */
-@property(nonatomic , strong) UIButton * pauseButton;
 
 @end
 
@@ -106,13 +86,12 @@
     UIButton * showMapButton = [[UIButton alloc]initWithTitle:nil titleColor:nil image:@"ic_sport_map" HightImageName:@"ic_sport_map" addTarget:self action:@selector(showMapButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:showMapButton];
     [showMapButton sizeToFit];
-//    showMapButton.backgroundColor = [UIColor whiteColor];
+
     [showMapButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(1.5*Margin);
         make.right.equalTo(self).offset(-Margin);
-//        make.size.mas_offset(CGSizeMake( 30 * KScreenScale, 30 * KScreenScale));
     }];
-    //NSLog(@"111111111%f",showMapButton.bounds.size.width);
+    
 }
 
 #pragma mark - 展开地图
@@ -126,7 +105,7 @@
 #pragma mark - 添加底部View
 -(void)addBottomView{
     
-    // NSArray* buttonImages = @[@"ic_sport_camera",@"ic_sport_lock_1",@"ic_sport_settings"];
+    
     
     
     UIButton* cameraButton = [[UIButton alloc]initWithTitle:nil titleColor:nil image:@"ic_sport_camera" HightImageName:@"ic_sport_camera" addTarget:self action:@selector(takeAPhoto) forControlEvents:UIControlEventTouchUpInside];
@@ -161,25 +140,24 @@
 #pragma mark - 添加支持视图
 -(void)addSportDataView{
     
-
-    UILabel* totalTimeLab = [[UILabel alloc]initWithText:@"00:00:00" andFont:[UIFont fontWithName:@"DINCond-Bold" size:15] textColor:[UIColor blackColor]];
+     //总时常
+    UILabel* totalTimeLab = [[UILabel alloc]initWithText:@"00:00:00" andFont:[UIFont fontWithName:@"DINCond-Bold" size:30] textColor:[UIColor blackColor]];
+    _totalTimeLab = totalTimeLab;
     totalTimeLab.textAlignment = NSTextAlignmentCenter;
     totalTimeLab.backgroundColor = [UIColor clearColor];
     UILabel* timeText = [[UILabel alloc]initWithText:@"时长" andFont:[UIFont fontWithName:@"DINCond-Bold" size:15]  textColor:[UIColor blackColor]];
     timeText.textAlignment = NSTextAlignmentCenter;
     timeText.backgroundColor = [UIColor clearColor];
     
-    UILabel* avgSpeedLable = [[UILabel alloc]initWithText:@"0" andFont:[UIFont fontWithName:@"DINCond-Bold" size:15]  textColor:[UIColor colorWithHex:0xffffff]];
+    UILabel* avgSpeedLable = [[UILabel alloc]initWithText:@"0.00" andFont:[UIFont fontWithName:@"DINCond-Bold" size:30]  textColor:[UIColor colorWithHex:0xffffff]];
     avgSpeedLable.textAlignment = NSTextAlignmentCenter;
     avgSpeedLable.backgroundColor = [UIColor clearColor];
     UILabel* speedText = [[UILabel alloc]initWithText:@"平均速度(公里/时)" andFont:[UIFont fontWithName:@"DINCond-Bold" size:15]  textColor:[UIColor colorWithHex:0xffffff]];
     speedText.textAlignment = NSTextAlignmentCenter;
     speedText.backgroundColor = [UIColor clearColor];
-    
-    
-    
     _avgSpeedLab = avgSpeedLable;
-    _totalTimeLab = totalTimeLab;
+    
+    
     
     
     [self addSubview:avgSpeedLable];
@@ -205,11 +183,12 @@
 #pragma mark - 添加距离lable
 -(void)addDistanceLable{
     
-    UILabel*  distanceLable = [[UILabel alloc]initWithText:@"0.00" andFont:[UIFont fontWithName:@"DINCond-Bold" size:90] textColor:[UIColor whiteColor]];
-    distanceLable.backgroundColor = [UIColor clearColor];
-    [self addSubview:distanceLable];
-    distanceLable.font = [UIFont fontWithName:@"DINCond-Bold" size:90] ;
-    [distanceLable mas_makeConstraints:^(MASConstraintMaker *make) {
+    UILabel*  totalDistanceLab = [[UILabel alloc]initWithText:@"0.00" andFont:[UIFont fontWithName:@"DINCond-Bold" size:90] textColor:[UIColor whiteColor]];
+    _totalDistaceLab = totalDistanceLab;
+    totalDistanceLab.backgroundColor = [UIColor clearColor];
+    [self addSubview:totalDistanceLab];
+    totalDistanceLab.font = [UIFont fontWithName:@"DINCond-Bold" size:90] ;
+    [totalDistanceLab mas_makeConstraints:^(MASConstraintMaker *make) {
         [make centerX];
         make.bottom.equalTo(self.mas_top).offset( 409 / [UIScreen mainScreen].scale);
     }];
@@ -220,7 +199,7 @@
     [self addSubview:distanceStringLable];
     [distanceStringLable mas_makeConstraints:^(MASConstraintMaker *make) {
         [make centerX];
-        make.top.equalTo(distanceLable.mas_bottom).offset( 8/ [UIScreen mainScreen].scale);
+        make.top.equalTo(totalDistanceLab.mas_bottom).offset( 8/ [UIScreen mainScreen].scale);
     }];
     
 }

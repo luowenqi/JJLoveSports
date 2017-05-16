@@ -8,15 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "JJSportTrackingModel.h"
+@class JJSportMapVC;
 
+@protocol JJSportMapVCDelegate <NSObject>
 
+-(void)updateSportDate:(JJSportTrackingModel*)sportTrackingModel mapVC:(JJSportMapVC*)mapVC;
+
+@end
 
 
 
 @interface JJSportMapVC : UIViewController
 
 
-
+@property(nonatomic , weak) id<JJSportMapVCDelegate> delegate;
 
 
 /**

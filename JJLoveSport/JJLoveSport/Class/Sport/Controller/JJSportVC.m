@@ -245,7 +245,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = KGlobalGreen;
-   // [self startSport:nil];
+    [self startSport:nil];
 }
 
 
