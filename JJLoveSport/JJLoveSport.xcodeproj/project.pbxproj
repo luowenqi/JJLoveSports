@@ -24,6 +24,7 @@
 		A41935C31EC322AD003FA0FD /* JJSportTrackingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935C21EC322AD003FA0FD /* JJSportTrackingModel.m */; };
 		A41935C81EC32F33003FA0FD /* UIButton+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = A41935C71EC32F33003FA0FD /* UIButton+Addtion.m */; };
 		A421683E1ECA026D00DC0486 /* JJCircleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = A421683D1ECA026D00DC0486 /* JJCircleTransition.m */; };
+		A463BCDE1ECD387C00B6235D /* JJSportSpeaker.m in Sources */ = {isa = PBXBuildFile; fileRef = A463BCDD1ECD387C00B6235D /* JJSportSpeaker.m */; };
 		A4DF52A91EC4B5A30024B22E /* JJSportPolylineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DF52A81EC4B5A30024B22E /* JJSportPolylineModel.m */; };
 		A4DF52AD1EC566AD0024B22E /* UILabel+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DF52AC1EC566AD0024B22E /* UILabel+Addtion.m */; };
 		A4DF52B31EC5D8850024B22E /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DF52B21EC5D8850024B22E /* UIColor+Addition.m */; };
@@ -67,6 +68,8 @@
 		A41935C91EC33117003FA0FD /* JJAddtionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJAddtionHeader.h; sourceTree = "<group>"; };
 		A421683C1ECA026D00DC0486 /* JJCircleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCircleTransition.h; sourceTree = "<group>"; };
 		A421683D1ECA026D00DC0486 /* JJCircleTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJCircleTransition.m; sourceTree = "<group>"; };
+		A463BCDC1ECD387C00B6235D /* JJSportSpeaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSportSpeaker.h; sourceTree = "<group>"; };
+		A463BCDD1ECD387C00B6235D /* JJSportSpeaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSportSpeaker.m; sourceTree = "<group>"; };
 		A4DF52A71EC4B5A30024B22E /* JJSportPolylineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSportPolylineModel.h; sourceTree = "<group>"; };
 		A4DF52A81EC4B5A30024B22E /* JJSportPolylineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSportPolylineModel.m; sourceTree = "<group>"; };
 		A4DF52AA1EC560200024B22E /* GlobalImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalImage.h; sourceTree = "<group>"; };
@@ -307,6 +310,8 @@
 				A4DF52A81EC4B5A30024B22E /* JJSportPolylineModel.m */,
 				A4EE6DDA1ECB13C10043DDAC /* JJMapTypeChooseVC.h */,
 				A4EE6DDB1ECB13C10043DDAC /* JJMapTypeChooseVC.m */,
+				A463BCDC1ECD387C00B6235D /* JJSportSpeaker.h */,
+				A463BCDD1ECD387C00B6235D /* JJSportSpeaker.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -431,7 +436,7 @@
 				TargetAttributes = {
 					A41935561EC30B52003FA0FD = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 836V4V67ZD;
+						DevelopmentTeam = RJ4BT4DZ57;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -543,6 +548,7 @@
 				A4EE6DDC1ECB13C10043DDAC /* JJMapTypeChooseVC.m in Sources */,
 				A41935C01EC32290003FA0FD /* JJSportMapVC.m in Sources */,
 				A41935BD1EC32255003FA0FD /* JJSportSupportVC.m in Sources */,
+				A463BCDE1ECD387C00B6235D /* JJSportSpeaker.m in Sources */,
 				A4DF52B61EC5EC880024B22E /* JJSportMaskView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -658,15 +664,16 @@
 			baseConfigurationReference = E4E06A0B614745D52C1F0E2C /* Pods-JJLoveSport.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 836V4V67ZD;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = RJ4BT4DZ57;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = $SRCROOT/$PRODUCT_NAME/Class/Other/PrefixHeader.pch;
 				INFOPLIST_FILE = JJLoveSport/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ios9qi.app;
+				PRODUCT_BUNDLE_IDENTIFIER = luowenqi.app.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c49841ee-0244-4e34-97ac-846a86f22efe";
-				PROVISIONING_PROFILE_SPECIFIER = jiuqi.dev;
+				PROVISIONING_PROFILE = "9f058a2d-71a8-46c6-ac44-efca89ed17a1";
+				PROVISIONING_PROFILE_SPECIFIER = luowenqi.dev;
 			};
 			name = Debug;
 		};
@@ -675,12 +682,13 @@
 			baseConfigurationReference = 507F3EAB481801A7B70A968D /* Pods-JJLoveSport.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = $SRCROOT/$PRODUCT_NAME/Class/Other/PrefixHeader.pch;
 				INFOPLIST_FILE = JJLoveSport/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ios9qi.app;
+				PRODUCT_BUNDLE_IDENTIFIER = luowenqi.app.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};

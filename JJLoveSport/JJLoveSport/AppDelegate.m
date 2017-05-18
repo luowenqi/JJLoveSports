@@ -21,7 +21,7 @@
     
     [[AMapServices sharedServices] setEnableHTTPS:YES];
     
-    [AMapServices sharedServices].apiKey = @"0250a036adf0c742c11b9c827f636158";
+    [AMapServices sharedServices].apiKey = @"648914b69a8e51e62bb15b1276ad11bd";
     
     self.window = [[UIWindow alloc]init];
     

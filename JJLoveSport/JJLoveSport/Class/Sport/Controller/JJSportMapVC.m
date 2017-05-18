@@ -229,7 +229,7 @@
     _mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
     
     ///把地图添加至view
-    [self.view addSubview:_mapView];
+    [self.view insertSubview:_mapView atIndex:0];
     //设置跟踪模式
     _mapView.userTrackingMode =  MAUserTrackingModeFollowWithHeading;
     

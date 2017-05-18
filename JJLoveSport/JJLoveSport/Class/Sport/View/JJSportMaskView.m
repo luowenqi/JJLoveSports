@@ -14,6 +14,12 @@
 @interface JJSportMaskView ()
 
 
+@property(nonatomic , strong) UIButton * pauseButton;
+
+@property(nonatomic , strong) UIButton * continueButton;
+
+@property(nonatomic , strong) UIButton * finishButton;
+
 
 @end
 
@@ -24,7 +30,7 @@
 
 
 -(instancetype)initWithFrame:(CGRect)frame{
-
+    
     if (self = [super initWithFrame:frame]) {
         [self setupUI];
     }
@@ -33,7 +39,9 @@
 
 -(void)setupUI{
     
-    self.backgroundColor = [UIColor colorWithHex:0x406479];
+    
+    [self configBackGroudColor];
+    //    self.backgroundColor = [UIColor colorWithHex:0x406479];
     
     [self addGPSRSSIButton];
     
@@ -41,52 +49,154 @@
     
     [self addSportDataView];
     
-    //     [self addPauseButton];
     
     [self addBottomView];
     
     [self addShowMapButton];
     
-     [self addSportStateButton];
-
+    [self addSportStateButton];
+    
 }
+
+
+
+
+#pragma mark - 渐变填充背景图层
+-(void)configBackGroudColor{
+    
+    //属于梯形图层  CAGradientLayer
+    CAGradientLayer* gradientLayer = [CAGradientLayer layer];
+    
+    //设置layer的位置和大小
+    gradientLayer.position = self.center;
+    gradientLayer.bounds = self.bounds;
+    
+    //插入layer
+    [self.layer insertSublayer:gradientLayer atIndex:0];
+    
+    //设置和渐变图层相关的内容
+    //渐变的位置,数值在0-1之间,本例中一共有三个渐变改变点,分别是最上面,六分点,最下面
+    gradientLayer.locations = @[@0,@0.6,@1];
+    
+    //设置每一个渐变点的颜色,需要的是CGColor
+    CGColorRef color1 = [UIColor colorWithHex:0x0e1428].CGColor;
+    CGColorRef color2 = [UIColor colorWithHex:0x406479].CGColor;
+    CGColorRef color3 = [UIColor colorWithHex:0x406578].CGColor;
+    gradientLayer.colors = @[(__bridge UIColor*)color1,(__bridge UIColor*)color2,(__bridge UIColor*)color3];
+}
+
 
 
 #pragma mark - 添加运动状态按钮
 -(void)addSportStateButton{
     
-    UIButton* button = [[UIButton alloc]init];
+    //暂停 150
+    UIButton* pauseButton = [[UIButton alloc]initWithTitle:nil titleColor:nil image:@"ic_sport_pause" HightImageName:nil addTarget:self action:@selector(chageSportStateClicked:) forControlEvents:UIControlEventTouchUpInside];
+    pauseButton.backgroundColor = [UIColor colorWithHex:0x33d54e];
+    pauseButton.tag = BASETAGE;
     
-    NSArray* sportStateString = @[@"暂停",@"继续",@"结束"];
+    //继续 151
+    UIButton* continueButton = [[UIButton alloc]initWithTitle:nil titleColor:nil image:@"ic_sport_continue" HightImageName:nil addTarget:self action:@selector(chageSportStateClicked:) forControlEvents:UIControlEventTouchUpInside];
+    continueButton.backgroundColor = [UIColor colorWithHex:0x33d54e];
+    continueButton.tag = BASETAGE + 1;
     
-    for (NSInteger i = 0; i< sportStateString.count; i++) {
-        button = [[UIButton alloc]initWithTitle:sportStateString[i] titleColor:[UIColor blackColor] image:nil HightImageName:nil addTarget:self action:@selector(chageSportStateClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:button];
-        button.tag = BASETAGE + i;
-        [button mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self).offset(450);
-            make.left.equalTo(self).offset(50* (i+1));
-        }];
-    }
+    //结束 152
+    UIButton* finishButton = [[UIButton alloc]initWithTitle:nil titleColor:nil image:@"ic_sport_finish" HightImageName:nil addTarget:self action:@selector(chageSportStateClicked:) forControlEvents:UIControlEventTouchUpInside];
+    finishButton.backgroundColor = [UIColor colorWithHex:0xC26C53];
+    finishButton.tag = BASETAGE + 2;
+    
+    [self addSubview:finishButton];
+    [self addSubview:continueButton];
+    [self addSubview:pauseButton];
+    
+    [finishButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        [make centerX];
+        make.bottom.equalTo(self.mas_bottom).offset(-99);
+    }];
+    [continueButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        [make centerX];
+        make.bottom.equalTo(self.mas_bottom).offset(-99);
+    }];
+    [pauseButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        [make centerX];
+        make.bottom.equalTo(self.mas_bottom).offset(-99);
+    }];
+    [pauseButton sizeToFit];
+    pauseButton.layer.cornerRadius = pauseButton.bounds.size.width / 2;
+    continueButton.layer.cornerRadius = pauseButton.bounds.size.width / 2;
+    finishButton.layer.cornerRadius = pauseButton.bounds.size.width / 2;
+    pauseButton.layer.masksToBounds = YES;
+    continueButton.layer.masksToBounds = YES;
+    finishButton.layer.masksToBounds = YES;
+    _finishButton = finishButton;
+    _continueButton = continueButton;
+    _pauseButton = pauseButton;
 }
 
 
 #pragma mark - 改变运动状态
 -(void)chageSportStateClicked:(UIButton*)sender{
-    sender.tag = sender.tag - BASETAGE;
-    [self.delegate changeSportState:sender];  
+    
+    
+    if (sender.tag == BASETAGE) {  //如果点击的是暂停
+        [self foldAnimation:NO];
+    }else if(sender.tag == BASETAGE +1){    //如果点击的是继续
+        [self foldAnimation:YES];
+    }
+    
+    
+    UIButton* button = [UIButton new];
+    button.tag = sender.tag - BASETAGE;
+    [self.delegate changeSportState:button];
+    
+    
 }
 
+
+- (void)foldAnimation:(BOOL)isFold{
+    
+    self.pauseButton.hidden = YES;
+    
+    [UIView animateWithDuration:0.4 animations:^{
+        if (!isFold) {  //展开
+            [self.continueButton mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(self.mas_centerX).offset( - self.pauseButton.bounds.size.width - 5);
+            }];
+            
+            [self.finishButton mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(self.mas_centerX).offset( self.pauseButton.bounds.size.width +5 );
+            }];
+            
+        }else{
+            [self.continueButton mas_updateConstraints:^(MASConstraintMaker *make) {
+                [make centerX];
+            }];
+            
+            [self.finishButton mas_updateConstraints:^(MASConstraintMaker *make) {
+                [make centerX];
+            }];
+            
+        }
+        [self layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        //如果是展开，动画一开始就隐藏暂停按钮。如果是收缩，则在动画完成后再隐藏暂停按钮
+        if (isFold == YES) {
+            self.pauseButton.hidden = NO;
+        }
+    }];
+    
+    
+    
+}
 
 
 
 #pragma mark - 展示地图按钮
 -(void)addShowMapButton{
-    
     UIButton * showMapButton = [[UIButton alloc]initWithTitle:nil titleColor:nil image:@"ic_sport_map" HightImageName:@"ic_sport_map" addTarget:self action:@selector(showMapButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:showMapButton];
     [showMapButton sizeToFit];
-
+    
     [showMapButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(1.5*Margin);
         make.right.equalTo(self).offset(-Margin);
@@ -98,16 +208,12 @@
 -(void)showMapButtonClicked{
     
     [self.delegate showMap];
-  
+    
 }
 
 
 #pragma mark - 添加底部View
 -(void)addBottomView{
-    
-    
-    
-    
     UIButton* cameraButton = [[UIButton alloc]initWithTitle:nil titleColor:nil image:@"ic_sport_camera" HightImageName:@"ic_sport_camera" addTarget:self action:@selector(takeAPhoto) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:cameraButton];
     [cameraButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -140,7 +246,7 @@
 #pragma mark - 添加支持视图
 -(void)addSportDataView{
     
-     //总时常
+    //总时常
     UILabel* totalTimeLab = [[UILabel alloc]initWithText:@"00:00:00" andFont:[UIFont fontWithName:@"DINCond-Bold" size:30] textColor:[UIColor blackColor]];
     _totalTimeLab = totalTimeLab;
     totalTimeLab.textAlignment = NSTextAlignmentCenter;

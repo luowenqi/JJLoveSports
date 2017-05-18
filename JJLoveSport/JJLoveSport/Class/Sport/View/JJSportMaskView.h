@@ -56,10 +56,6 @@
 @property(nonatomic , strong) UILabel * avgSpeedLab;
 
 
-/**
- 暂停按钮
- */
-@property(nonatomic , strong) UIButton * pauseButton;
 
 
 /**

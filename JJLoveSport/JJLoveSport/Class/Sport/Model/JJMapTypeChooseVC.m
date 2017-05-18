@@ -30,10 +30,7 @@
     
    
     for (NSInteger i = 0; i< mapTpyeButtonNormalImage.count; i++) {
-        
         UIButton* button = [[UIButton alloc]init];
-       
-    
          button  = [[UIButton alloc]initWithTitle:nil titleColor:nil image:mapTpyeButtonNormalImage[i] HightImageName:nil addTarget:self action:@selector(changeMapViewType:) forControlEvents:UIControlEventTouchUpInside];
         [button setImage:[UIImage imageNamed:mapTpyeButtonSelectedImage[i]]   forState:UIControlStateSelected];
         

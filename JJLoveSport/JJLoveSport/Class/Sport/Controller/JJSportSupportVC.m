@@ -8,6 +8,7 @@
 
 #import "JJSportSupportVC.h"
 #import "JJSportMaskView.h"
+#import "JJSportSpeaker.h"
 
 
 
@@ -20,6 +21,11 @@
 #pragma mark - 遮罩视图
 @property(nonatomic , strong) JJSportMaskView * maskView;
 
+/**
+ 语音播报模型
+ */
+@property(nonatomic , strong) JJSportSpeaker * sportSpeaker;
+
 @end
 
 @implementation JJSportSupportVC
@@ -27,7 +33,8 @@
 
 -(instancetype)init{
     if (self = [super init]) {
-        
+   JJSportSpeaker* sportSpeaker = [[JJSportSpeaker alloc]initWithSportType:self.sportType andDistanceUnit:1];
+         _sportSpeaker = sportSpeaker;
     }
     return self;
 }
@@ -36,6 +43,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [_sportSpeaker speakSportStart];
+   
+    
     [self setupUI];
 }
 
@@ -60,10 +71,8 @@
     }else{
         str = nil;
     }
-    
     [self.maskView.gpsStateButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     [self.maskView.gpsStateButton setTitle:str forState:UIControlStateNormal];
-//    [self.maskView.gpsStateButton sizeToFit];
 }
 
 
@@ -104,15 +113,16 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     self.mapVC.trackingModel.sportState = sender.tag;
+    [_sportSpeaker speakSportState:sender.tag];
 }
 
 #pragma mark - JJSportMapVCDelegate,更新运动数据
 -(void)updateSportDate:(JJSportTrackingModel *)sportTrackingModel mapVC:(JJSportMapVC *)mapVC{
-
     self.maskView.totalTimeLab.text = sportTrackingModel.totalTimeString;
     self.maskView.totalDistaceLab.text = [NSString stringWithFormat:@"%.2f",sportTrackingModel.totalDistance];
     self.maskView.avgSpeedLab.text = [NSString stringWithFormat:@"%.2f",sportTrackingModel.avgSpeed];
-
+    [_sportSpeaker speakSportCompositeDataDistance:sportTrackingModel.totalDistance time:(int)sportTrackingModel.totalTime speed:sportTrackingModel.avgSpeed];
+    //NSLog(@"%.f",sportTrackingModel.totalTime);
 }
 
 

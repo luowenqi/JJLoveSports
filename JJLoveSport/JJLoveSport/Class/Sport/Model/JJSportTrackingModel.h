@@ -16,8 +16,8 @@
 //运动类型
 typedef enum : NSUInteger {
     JJSportTypeRun,
-    JJSJJSportWalk,
-    JJSJJSportRiding,
+    JJSportWalk,
+    JJSportRiding,
 } JJSportType;
 
 //运动状态

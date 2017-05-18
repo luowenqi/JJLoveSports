@@ -43,10 +43,10 @@
         case JJSportTypeRun:
              image = [UIImage imageNamed:KGlobalSportTypeImageNames[0]];
             break;
-        case JJSJJSportWalk:
+        case JJSportWalk:
             image = [UIImage imageNamed:KGlobalSportTypeImageNames[1]];
             break;
-        case JJSJJSportRiding:
+        case JJSportRiding:
             image = [UIImage imageNamed:KGlobalSportTypeImageNames[2]];
             break;
   
