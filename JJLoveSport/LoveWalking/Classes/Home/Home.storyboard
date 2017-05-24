@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="cjg-cT-RxC">
+            <objects>
+                <viewController storyboardIdentifier="DJFHomeViewController" id="3ri-pY-O1X" customClass="DJFHomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EpU-cH-H9d"/>
+                        <viewControllerLayoutGuide type="bottom" id="0VM-uM-Tfa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kZV-ni-ot6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="u4B-Hz-HPU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTz-5N-hwJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2fw-b4-HHe" customClass="CardView">
+                                        <rect key="frame" x="40" y="50" width="295" height="487"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="2fw-b4-HHe" secondAttribute="trailing" constant="40" id="0A9-5L-pZv"/>
+                                    <constraint firstItem="2fw-b4-HHe" firstAttribute="leading" secondItem="PTz-5N-hwJ" secondAttribute="leading" constant="40" id="VYN-YY-hvn"/>
+                                    <constraint firstAttribute="bottom" secondItem="2fw-b4-HHe" secondAttribute="bottom" constant="130" id="oyL-Zd-rMl"/>
+                                    <constraint firstItem="2fw-b4-HHe" firstAttribute="top" secondItem="PTz-5N-hwJ" secondAttribute="top" constant="50" id="wXX-WI-fnX"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1D9-7W-p8f">
+                                <rect key="frame" x="-146" y="533.5" width="667" height="667"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tj3-XT-xDz">
+                                        <rect key="frame" x="284" y="20" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="9Lx-zf-wxp"/>
+                                            <constraint firstAttribute="height" constant="100" id="exs-dk-usz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" backgroundImage="startBtn">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="SportStateButtonClick:" destination="3ri-pY-O1X" eventType="touchUpInside" id="e8o-DJ-lhR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Tj3-XT-xDz" firstAttribute="top" secondItem="1D9-7W-p8f" secondAttribute="top" constant="20" id="IM4-ha-8Ww"/>
+                                    <constraint firstAttribute="width" secondItem="1D9-7W-p8f" secondAttribute="height" multiplier="1:1" id="U0U-dZ-DMj"/>
+                                    <constraint firstItem="Tj3-XT-xDz" firstAttribute="centerX" secondItem="1D9-7W-p8f" secondAttribute="centerX" id="z6I-l4-XOg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PTz-5N-hwJ" firstAttribute="top" secondItem="kZV-ni-ot6" secondAttribute="top" id="44r-Qp-XFq"/>
+                            <constraint firstItem="0VM-uM-Tfa" firstAttribute="top" secondItem="u4B-Hz-HPU" secondAttribute="bottom" id="E4g-0Y-5yY"/>
+                            <constraint firstItem="1D9-7W-p8f" firstAttribute="centerX" secondItem="kZV-ni-ot6" secondAttribute="centerX" id="HLW-fP-z3X"/>
+                            <constraint firstItem="u4B-Hz-HPU" firstAttribute="leading" secondItem="kZV-ni-ot6" secondAttribute="leading" id="JTG-hG-rtL"/>
+                            <constraint firstItem="1D9-7W-p8f" firstAttribute="height" secondItem="kZV-ni-ot6" secondAttribute="height" id="W0j-ib-QkZ"/>
+                            <constraint firstItem="1D9-7W-p8f" firstAttribute="centerY" secondItem="kZV-ni-ot6" secondAttribute="centerY" multiplier="2.6" id="bKv-55-b20"/>
+                            <constraint firstItem="u4B-Hz-HPU" firstAttribute="top" secondItem="kZV-ni-ot6" secondAttribute="top" id="bNk-34-wEr"/>
+                            <constraint firstAttribute="bottom" secondItem="PTz-5N-hwJ" secondAttribute="bottom" id="cVM-5I-yGf"/>
+                            <constraint firstAttribute="trailing" secondItem="PTz-5N-hwJ" secondAttribute="trailing" id="ocY-JE-8gV"/>
+                            <constraint firstAttribute="trailing" secondItem="u4B-Hz-HPU" secondAttribute="trailing" id="qXe-qj-eh1"/>
+                            <constraint firstItem="PTz-5N-hwJ" firstAttribute="leading" secondItem="kZV-ni-ot6" secondAttribute="leading" id="sXq-wr-Vaw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cardView" destination="2fw-b4-HHe" id="jML-gE-r4l"/>
+                        <outlet property="shadeView" destination="1D9-7W-p8f" id="NUL-W0-mLS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U2d-DP-6CC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-709.60000000000002" y="-203.74812593703149"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bg" width="622" height="1102"/>
+        <image name="startBtn" width="198" height="198"/>
+    </resources>
+</document>

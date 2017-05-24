@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="MFLiHei_Noncommercial-Regular.ttf">
+            <string>MFLiHei_Noncommercial-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Sporting View Controller-->
+        <scene sceneID="68t-M9-DZS">
+            <objects>
+                <viewController storyboardIdentifier="DJFSportingViewController" id="ZlJ-9E-tbW" customClass="DJFSportingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yZg-le-cnL"/>
+                        <viewControllerLayoutGuide type="bottom" id="4YM-Au-ktt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YWE-dh-aRM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKk-TM-GS7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="417"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BvM-tD-VIU" customClass="DJFGPSState">
+                                        <rect key="frame" x="10" y="25" width="171" height="28"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.20034246575342465" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="hIL-SV-uyL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <inset key="imageEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
+                                        <state key="normal" title="   建议绕开高楼大厦  " image="ic_sport_gps_connect_1"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="14"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avU-wl-dtb">
+                                        <rect key="frame" x="335" y="30" width="30" height="30"/>
+                                        <state key="normal" image="ic_sport_map"/>
+                                        <connections>
+                                            <action selector="mapButtonClick:" destination="ZlJ-9E-tbW" eventType="touchUpInside" id="HPc-2V-eX5"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECq-f3-Bz1">
+                                        <rect key="frame" x="84" y="115" width="207" height="70.5"/>
+                                        <fontDescription key="fontDescription" name="MFLiHei_Noncommercial-Regular" family="MF LiHei (Noncommercial)" pointSize="70"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距离(公里)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yN5-kq-iBq">
+                                        <rect key="frame" x="150" y="200.5" width="75.5" height="16"/>
+                                        <fontDescription key="fontDescription" name="MFLiHei_Noncommercial-Regular" family="MF LiHei (Noncommercial)" pointSize="16"/>
+                                        <color key="textColor" red="0.5450980392" green="0.61960784310000006" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="运动时长" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54W-sX-LaO">
+                                        <rect key="frame" x="68.5" y="404" width="52" height="13"/>
+                                        <fontDescription key="fontDescription" name="MFLiHei_Noncommercial-Regular" family="MF LiHei (Noncommercial)" pointSize="13"/>
+                                        <color key="textColor" red="0.5450980392" green="0.61960784310000006" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="平均速度(公里/小时)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVq-w0-0Ev">
+                                        <rect key="frame" x="221.5" y="404" width="119.5" height="13"/>
+                                        <fontDescription key="fontDescription" name="MFLiHei_Noncommercial-Regular" family="MF LiHei (Noncommercial)" pointSize="13"/>
+                                        <color key="textColor" red="0.5450980392" green="0.61960784310000006" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWZ-qV-ZZF">
+                                        <rect key="frame" x="51" y="379" width="88" height="15"/>
+                                        <fontDescription key="fontDescription" name="MFLiHei_Noncommercial-Regular" family="MF LiHei (Noncommercial)" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LzQ-vJ-iJ5">
+                                        <rect key="frame" x="258.5" y="379" width="44.5" height="15"/>
+                                        <fontDescription key="fontDescription" name="MFLiHei_Noncommercial-Regular" family="MF LiHei (Noncommercial)" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFq-IG-ew3">
+                                        <rect key="frame" x="161" y="232" width="53" height="60"/>
+                                        <fontDescription key="fontDescription" name="MFLiHei_Noncommercial-Regular" family="MF LiHei (Noncommercial)" pointSize="60"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="步" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3U7-Di-8Iy">
+                                        <rect key="frame" x="179" y="306.5" width="16" height="16"/>
+                                        <fontDescription key="fontDescription" name="MFLiHei_Noncommercial-Regular" family="MF LiHei (Noncommercial)" pointSize="16"/>
+                                        <color key="textColor" red="0.5450980392" green="0.61960784310000006" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="JVq-w0-0Ev" secondAttribute="bottom" id="03s-FQ-sVm"/>
+                                    <constraint firstItem="BvM-tD-VIU" firstAttribute="leading" secondItem="kKk-TM-GS7" secondAttribute="leading" constant="10" id="0a5-O0-RR8"/>
+                                    <constraint firstItem="LzQ-vJ-iJ5" firstAttribute="centerX" secondItem="JVq-w0-0Ev" secondAttribute="centerX" id="7h0-CQ-9Dj"/>
+                                    <constraint firstAttribute="bottom" secondItem="54W-sX-LaO" secondAttribute="bottom" id="7iV-ml-zKj"/>
+                                    <constraint firstItem="3U7-Di-8Iy" firstAttribute="top" secondItem="WFq-IG-ew3" secondAttribute="bottom" constant="15" id="Aq5-jT-AVK"/>
+                                    <constraint firstItem="54W-sX-LaO" firstAttribute="top" secondItem="PWZ-qV-ZZF" secondAttribute="bottom" constant="10" id="HBX-FP-mfZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="avU-wl-dtb" secondAttribute="trailing" constant="10" id="J0E-qJ-pd6"/>
+                                    <constraint firstItem="WFq-IG-ew3" firstAttribute="top" secondItem="yN5-kq-iBq" secondAttribute="bottom" constant="15.5" id="K71-rS-sQt"/>
+                                    <constraint firstItem="JVq-w0-0Ev" firstAttribute="top" secondItem="LzQ-vJ-iJ5" secondAttribute="bottom" constant="10" id="Mdy-5w-5Et"/>
+                                    <constraint firstItem="54W-sX-LaO" firstAttribute="centerX" secondItem="kKk-TM-GS7" secondAttribute="centerX" multiplier="0.5" id="O6r-u7-0qN"/>
+                                    <constraint firstItem="BvM-tD-VIU" firstAttribute="top" secondItem="kKk-TM-GS7" secondAttribute="top" constant="25" id="OPC-za-SWc"/>
+                                    <constraint firstItem="JVq-w0-0Ev" firstAttribute="centerX" secondItem="kKk-TM-GS7" secondAttribute="centerX" multiplier="1.5" id="Qau-FK-ff2"/>
+                                    <constraint firstItem="ECq-f3-Bz1" firstAttribute="centerX" secondItem="kKk-TM-GS7" secondAttribute="centerX" id="cek-Zx-Ub6"/>
+                                    <constraint firstItem="ECq-f3-Bz1" firstAttribute="top" secondItem="kKk-TM-GS7" secondAttribute="top" constant="115" id="dhN-RT-rUh"/>
+                                    <constraint firstItem="PWZ-qV-ZZF" firstAttribute="centerX" secondItem="54W-sX-LaO" secondAttribute="centerX" id="dow-XG-5b2"/>
+                                    <constraint firstItem="WFq-IG-ew3" firstAttribute="centerX" secondItem="kKk-TM-GS7" secondAttribute="centerX" id="lqm-TF-Zsd"/>
+                                    <constraint firstItem="3U7-Di-8Iy" firstAttribute="centerX" secondItem="kKk-TM-GS7" secondAttribute="centerX" id="qPk-62-7Za"/>
+                                    <constraint firstItem="yN5-kq-iBq" firstAttribute="centerX" secondItem="kKk-TM-GS7" secondAttribute="centerX" id="rc4-hk-9r8"/>
+                                    <constraint firstItem="avU-wl-dtb" firstAttribute="top" secondItem="kKk-TM-GS7" secondAttribute="top" constant="30" id="w7P-fQ-fa2"/>
+                                    <constraint firstItem="yN5-kq-iBq" firstAttribute="top" secondItem="ECq-f3-Bz1" secondAttribute="bottom" constant="15" id="yk9-Db-oIH"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vTE-vl-xzy">
+                                <rect key="frame" x="0.0" y="417" width="375" height="250"/>
+                                <subviews>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5q-4t-efX" userLabel="结束">
+                                        <rect key="frame" x="137.5" y="75" width="100" height="100"/>
+                                        <color key="backgroundColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="ic_sport_finish"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="SportStateButtonClick:" destination="ZlJ-9E-tbW" eventType="touchUpInside" id="YRN-BB-bWb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2Q-9h-WEG" userLabel="继续">
+                                        <rect key="frame" x="137" y="75" width="100" height="100"/>
+                                        <color key="backgroundColor" red="0.30588235289999999" green="0.85757250809999996" blue="0.58018918509999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="ic_sport_continue"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="SportStateButtonClick:" destination="ZlJ-9E-tbW" eventType="touchUpInside" id="mcd-vl-oBO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHY-S2-O2w" userLabel="暂停">
+                                        <rect key="frame" x="137.5" y="75" width="100" height="100"/>
+                                        <color key="backgroundColor" red="0.30588235289999999" green="0.76078431369999999" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="ic_sport_pause"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="SportStateButtonClick:" destination="ZlJ-9E-tbW" eventType="touchUpInside" id="ycp-2e-fX8"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzv-PR-WT3" userLabel="继续">
+                                        <rect key="frame" x="137" y="75" width="100" height="100"/>
+                                        <color key="backgroundColor" red="0.30588235289999999" green="0.85757250809999996" blue="0.58018918509999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="ic_sport_start"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="SportStateButtonClick:" destination="ZlJ-9E-tbW" eventType="touchUpInside" id="q6Z-yL-ib7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="fzv-PR-WT3" firstAttribute="centerY" secondItem="vTE-vl-xzy" secondAttribute="centerY" id="4xp-8i-r3I"/>
+                                    <constraint firstItem="nHY-S2-O2w" firstAttribute="centerX" secondItem="vTE-vl-xzy" secondAttribute="centerX" id="CMY-xY-6u8"/>
+                                    <constraint firstItem="fzv-PR-WT3" firstAttribute="centerX" secondItem="vTE-vl-xzy" secondAttribute="centerX" id="IEx-ZG-a11"/>
+                                    <constraint firstItem="nHY-S2-O2w" firstAttribute="centerY" secondItem="vTE-vl-xzy" secondAttribute="centerY" id="Wtq-1r-MtR"/>
+                                    <constraint firstItem="W2Q-9h-WEG" firstAttribute="centerX" secondItem="vTE-vl-xzy" secondAttribute="centerX" id="bIl-aI-ImI"/>
+                                    <constraint firstItem="y5q-4t-efX" firstAttribute="centerY" secondItem="vTE-vl-xzy" secondAttribute="centerY" id="cte-0t-C2v"/>
+                                    <constraint firstItem="W2Q-9h-WEG" firstAttribute="centerY" secondItem="vTE-vl-xzy" secondAttribute="centerY" id="dR2-j8-VaM"/>
+                                    <constraint firstItem="y5q-4t-efX" firstAttribute="centerX" secondItem="vTE-vl-xzy" secondAttribute="centerX" id="f4a-M3-vGn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="vTE-vl-xzy" secondAttribute="trailing" id="D0E-7U-Dh2"/>
+                            <constraint firstAttribute="trailing" secondItem="kKk-TM-GS7" secondAttribute="trailing" id="M9E-8O-SK5"/>
+                            <constraint firstItem="vTE-vl-xzy" firstAttribute="top" secondItem="kKk-TM-GS7" secondAttribute="bottom" id="OKB-gE-eeW"/>
+                            <constraint firstItem="vTE-vl-xzy" firstAttribute="height" secondItem="kKk-TM-GS7" secondAttribute="height" multiplier="0.6" id="QZW-tp-ieR"/>
+                            <constraint firstItem="kKk-TM-GS7" firstAttribute="leading" secondItem="YWE-dh-aRM" secondAttribute="leading" id="bpp-Rx-rXF"/>
+                            <constraint firstItem="kKk-TM-GS7" firstAttribute="top" secondItem="YWE-dh-aRM" secondAttribute="top" id="jPs-Ga-0Mp"/>
+                            <constraint firstItem="4YM-Au-ktt" firstAttribute="top" secondItem="vTE-vl-xzy" secondAttribute="bottom" id="nC7-jI-nHQ"/>
+                            <constraint firstItem="vTE-vl-xzy" firstAttribute="leading" secondItem="YWE-dh-aRM" secondAttribute="leading" id="yG4-qu-H0e"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="continueButtronConstraint" destination="bIl-aI-ImI" id="NVr-6Q-JkK"/>
+                        <outlet property="distanceLabel" destination="ECq-f3-Bz1" id="lOU-1f-2Zi"/>
+                        <outlet property="distanceUnit" destination="yN5-kq-iBq" id="br9-MT-9en"/>
+                        <outlet property="finishButtonConstraint" destination="f4a-M3-vGn" id="Cbh-e0-mSD"/>
+                        <outlet property="speedLabel" destination="LzQ-vJ-iJ5" id="1Eo-bj-soF"/>
+                        <outlet property="startBtn" destination="fzv-PR-WT3" id="wWw-Z0-QaO"/>
+                        <outlet property="stepLabel1" destination="3U7-Di-8Iy" id="nga-9h-0Om"/>
+                        <outlet property="stepLablel" destination="WFq-IG-ew3" id="USj-0q-rm2"/>
+                        <outlet property="timeLabel" destination="PWZ-qV-ZZF" id="s9e-f2-gJz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vba-of-Kk1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-729" y="-159"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="oXK-B5-Jxa">
+            <objects>
+                <viewController storyboardIdentifier="DJFMapViewController" id="IBi-3E-VtL" customClass="DJFMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IpT-sm-W1Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="LVK-rR-z36"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MYC-a0-8hb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqh-Bp-TuB">
+                                <rect key="frame" x="0.0" y="577" width="375" height="90"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="heh-eu-7dA">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距离(公里)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmx-X7-Cee">
+                                            <rect key="frame" x="61" y="61" width="66" height="14"/>
+                                            <fontDescription key="fontDescription" name="MFLiHei_Noncommercial-Regular" family="MF LiHei (Noncommercial)" pointSize="14"/>
+                                            <color key="textColor" red="0.5450980392" green="0.61960784310000006" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="运动时长" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FaG-8b-1Ut">
+                                            <rect key="frame" x="254" y="61" width="56" height="14"/>
+                                            <fontDescription key="fontDescription" name="MFLiHei_Noncommercial-Regular" family="MF LiHei (Noncommercial)" pointSize="14"/>
+                                            <color key="textColor" red="0.5450980392" green="0.61960784310000006" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4VV-xV-dYH">
+                                            <rect key="frame" x="61.5" y="29" width="65.5" height="22"/>
+                                            <fontDescription key="fontDescription" name="MFLiHei_Noncommercial-Regular" family="MF LiHei (Noncommercial)" pointSize="22"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0W-L6-RFZ">
+                                            <rect key="frame" x="218" y="29" width="129" height="22"/>
+                                            <fontDescription key="fontDescription" name="MFLiHei_Noncommercial-Regular" family="MF LiHei (Noncommercial)" pointSize="22"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="FaG-8b-1Ut" firstAttribute="centerX" secondItem="heh-eu-7dA" secondAttribute="centerX" multiplier="1.5" id="3JE-jg-Gvv"/>
+                                        <constraint firstItem="FaG-8b-1Ut" firstAttribute="centerX" secondItem="O0W-L6-RFZ" secondAttribute="centerX" id="OaF-WC-6wD"/>
+                                        <constraint firstItem="FaG-8b-1Ut" firstAttribute="top" secondItem="O0W-L6-RFZ" secondAttribute="bottom" constant="10" id="frt-fL-qXa"/>
+                                        <constraint firstItem="4VV-xV-dYH" firstAttribute="centerX" secondItem="Rmx-X7-Cee" secondAttribute="centerX" id="g8o-wh-0Wc"/>
+                                        <constraint firstAttribute="bottom" secondItem="FaG-8b-1Ut" secondAttribute="bottom" constant="15" id="kOo-Rr-MYu"/>
+                                        <constraint firstAttribute="bottom" secondItem="Rmx-X7-Cee" secondAttribute="bottom" constant="15" id="pvj-ci-d8x"/>
+                                        <constraint firstItem="Rmx-X7-Cee" firstAttribute="top" secondItem="4VV-xV-dYH" secondAttribute="bottom" constant="10" id="tQk-GB-ceU"/>
+                                        <constraint firstItem="Rmx-X7-Cee" firstAttribute="centerX" secondItem="heh-eu-7dA" secondAttribute="centerX" multiplier="0.5" id="zcX-dU-Egw"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="fLz-wd-Hfd"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSl-7S-cza">
+                                <rect key="frame" x="15" y="519" width="43" height="43"/>
+                                <state key="normal" image="ic_sport_gps_map_mode"/>
+                                <connections>
+                                    <action selector="choseButtonClick:" destination="IBi-3E-VtL" eventType="touchUpInside" id="gvD-Qe-s6C"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YN6-ej-vKI">
+                                <rect key="frame" x="317" y="519" width="43" height="43"/>
+                                <state key="normal" image="ic_sport_gps_map_close"/>
+                                <connections>
+                                    <segue destination="uHY-iS-xtm" kind="unwind" unwindAction="dismiss:" id="sSl-0A-pEZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDo-Qm-TdE" customClass="DJFGPSState">
+                                <rect key="frame" x="10" y="25" width="171" height="28"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.20034246580000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="aDD-bG-g2t"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
+                                <state key="normal" title="   建议绕开高楼大厦  " image="ic_sport_gps_map_connect_1"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hqh-Bp-TuB" firstAttribute="top" secondItem="fSl-7S-cza" secondAttribute="bottom" constant="15" id="3Qe-ba-wbc"/>
+                            <constraint firstAttribute="trailing" secondItem="hqh-Bp-TuB" secondAttribute="trailing" id="BaU-Qj-JYD"/>
+                            <constraint firstItem="lDo-Qm-TdE" firstAttribute="top" secondItem="MYC-a0-8hb" secondAttribute="top" constant="25" id="JDy-Jm-kC6"/>
+                            <constraint firstItem="fSl-7S-cza" firstAttribute="leading" secondItem="MYC-a0-8hb" secondAttribute="leading" constant="15" id="SOW-IS-RqV"/>
+                            <constraint firstAttribute="trailing" secondItem="YN6-ej-vKI" secondAttribute="trailing" constant="15" id="VkZ-cF-WHj"/>
+                            <constraint firstItem="hqh-Bp-TuB" firstAttribute="leading" secondItem="MYC-a0-8hb" secondAttribute="leading" id="Wy9-Y7-CEF"/>
+                            <constraint firstItem="LVK-rR-z36" firstAttribute="top" secondItem="hqh-Bp-TuB" secondAttribute="bottom" id="ZXD-PG-RWh"/>
+                            <constraint firstItem="lDo-Qm-TdE" firstAttribute="leading" secondItem="MYC-a0-8hb" secondAttribute="leading" constant="10" id="hQV-5M-Sue"/>
+                            <constraint firstItem="YN6-ej-vKI" firstAttribute="centerY" secondItem="fSl-7S-cza" secondAttribute="centerY" id="ktS-sf-M5J"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="distanceLabel" destination="4VV-xV-dYH" id="veI-QX-grF"/>
+                        <outlet property="distanceUnitLbl" destination="Rmx-X7-Cee" id="Hes-T6-gCB"/>
+                        <outlet property="timeLabel" destination="O0W-L6-RFZ" id="rGe-RP-cLP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="soj-Mt-BMT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="uHY-iS-xtm" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-85" y="-160"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_sport_continue" width="100" height="100"/>
+        <image name="ic_sport_finish" width="100" height="100"/>
+        <image name="ic_sport_gps_connect_1" width="56" height="24"/>
+        <image name="ic_sport_gps_map_close" width="43" height="43"/>
+        <image name="ic_sport_gps_map_connect_1" width="56" height="24"/>
+        <image name="ic_sport_gps_map_mode" width="43" height="43"/>
+        <image name="ic_sport_map" width="30" height="30"/>
+        <image name="ic_sport_pause" width="100" height="100"/>
+        <image name="ic_sport_start" width="100" height="100"/>
+    </resources>
+</document>

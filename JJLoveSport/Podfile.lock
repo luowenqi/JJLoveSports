@@ -1,26 +1,63 @@
 PODS:
-  - AMap3DMap (4.1.0):
-    - AMapFoundation (~> 1.1)
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - AMap3DMap (4.2.0):
+    - AMapFoundation (~> 1.2)
   - AMapFoundation (1.2.0)
+  - AMapLocation (2.1.1):
+    - AMapFoundation (~> 1.2)
+  - AMapSearch (4.2.0):
+    - AMapFoundation (~> 1.0)
   - Masonry (1.0.1)
+  - MJRefresh (3.1.12)
+  - PNChart (0.8.9):
+    - UICountingLabel (~> 1.2.0)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
+  - SVProgressHUD (2.0.3)
+  - UICountingLabel (1.2.0)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
-  - AMap3DMap (~> 4.1.0)
+  - AFNetworking
+  - AMap3DMap
+  - AMapLocation
+  - AMapSearch
   - Masonry
+  - MJRefresh
+  - PNChart
   - SDWebImage
+  - SVProgressHUD
   - YYModel
 
 SPEC CHECKSUMS:
-  AMap3DMap: '048e1ef05ce87a486d6bf4f09a4e2285356b3a16'
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AMap3DMap: 35a5e1ce80796ecf996b2c7b847b4ac94e97e448
   AMapFoundation: 8acc2bf4eed79aab4d21002ddb8b24a6f3f3621c
+  AMapLocation: dd203f76b034ef5cb546600f4e1ffad2a3a14072
+  AMapSearch: 788020fca7ed18819e8bc2bfca716a6775a05ada
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 78bfbb5c58ae3075feca4502ba60a17337b2d3f9
+PODFILE CHECKSUM: 0724cf564fb8694e952d13dd6bf67a2d4be7ed6f
 
 COCOAPODS: 1.2.0
